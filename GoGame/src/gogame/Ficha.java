@@ -11,9 +11,11 @@ package gogame;
  */
 public class Ficha {
     private Cruce pos;
-    private int color;
+    private Color color;
     
-    public Ficha(Cruce pos, int color){
+    enum Color { Negro, Blanco };
+    
+    public Ficha(Cruce pos, Color color){
         this.pos = pos;
         this.color = color;
     }
@@ -45,7 +47,7 @@ public class Ficha {
     /**
      * @return the color
      */
-    public int getColor() {
+    public Color getColor() {
         return color;
     }
 }

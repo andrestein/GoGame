@@ -10,21 +10,21 @@ package gogame;
  * @author LENOVO
  */
 public class Cruce {
-    private int f;
-    private int c;
+    private int f; // fila 
+    private int c; // columna
     
     public Cruce(int f, int c ){
         this.f = f;
         this.c = c;
     }
 
-    public boolean equals(int f,int g){
-        return f ==g;
+    public boolean equals(int f,int c){
+        return this.f == f && this.c == c;
     }
     
     @Override
     public String toString(){
-        return getFila()+""+getColumna();
+        return f+"-"+c;
     }
     
     /**
