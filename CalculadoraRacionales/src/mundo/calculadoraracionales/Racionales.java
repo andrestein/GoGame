@@ -71,7 +71,7 @@ public class Racionales {
     }
     
         public Racional parseRacional(String r) {
-        if (r.matches("[-][0-9]+[/]{0,1}[-][0-9]+|[-][0-9]")) {
+        if (r.matches("^\-?[0-9]+/\-?[0-9]+$|^\-?[0-9]$")) {
             String[] num = r.split("/");
             System.out.println(num[0] + " / " + num[1]);
             return new Racional(Integer.parseInt(num[0]), Integer.parseInt(num[1]));
