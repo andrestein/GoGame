@@ -9,6 +9,6 @@ package interfaz.calculadoraracionales;
  *
  * @author LENOVO
  */
-public class PanelDivicion {
+public class PanelDivision {
     
 }
