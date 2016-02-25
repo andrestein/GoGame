@@ -13,4 +13,23 @@ import java.awt.*;
  */
 public class PanelMultiplicacion extends JPanel{
     
+private JTextField txtRacional1;
+    private JTextField txtRacional2;    
+    private JButton btnMultiplicacion;
+    
+    public PanelMultiplicacion(){
+        initComponets();
+    }
+    
+    private void initComponets(){
+        txtRacional1 = new JTextField();
+        txtRacional2 = new JTextField();
+        JLabel lbOperador = new JLabel(" + ");
+        btnMultiplicacion = new JButton("Sumar");
+        setLayout(new FlowLayout());
+        add(txtRacional1);
+        add(lbOperador);
+        add(txtRacional2);
+        add(btnMultiplicacion);        
+    }
 }

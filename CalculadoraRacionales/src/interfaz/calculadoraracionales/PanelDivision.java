@@ -12,7 +12,25 @@ import java.awt.*;
  * @author LENOVO
  */
 
-public class PanelDivision {
+public class PanelDivision extends JPanel{
 
+    private JTextField txtRacional1;
+    private JTextField txtRacional2;    
+    private JButton btnDivision;
     
+    public PanelDivision(){
+        initComponets();
+    }
+    
+    private void initComponets(){
+        txtRacional1 = new JTextField();
+        txtRacional2 = new JTextField();
+        JLabel lbOperador = new JLabel(" + ");
+        btnDivision = new JButton("Sumar");
+        setLayout(new FlowLayout());
+        add(txtRacional1);
+        add(lbOperador);
+        add(txtRacional2);
+        add(btnDivision);        
+    }
 }

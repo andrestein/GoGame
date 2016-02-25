@@ -27,7 +27,7 @@ public class Racionales {
     
     
     public Racionales simplificar(Racionales r){
-        for(int i = 0;i<9;i++ ){
+        for(int i = 1;i<9;i++ ){
             if(r.getNumerador() %i == 0 
                     && r.getDenominador()%i == 0){
                 r.setNumerador(r.getNumerador()/i);
