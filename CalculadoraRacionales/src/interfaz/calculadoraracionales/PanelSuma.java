@@ -5,10 +5,13 @@
  */
 package interfaz.calculadoraracionales;
 
+import javax.swing.*;
+import java.awt.*;
+
 /**
  *
  * @author LENOVO
  */
-public class PanelSuma {
+public class PanelSuma extends JPanel{
     
 }
