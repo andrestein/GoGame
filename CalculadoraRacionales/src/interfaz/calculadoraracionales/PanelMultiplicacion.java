@@ -4,11 +4,13 @@
  * and open the template in the editor.
  */
 package interfaz.calculadoraracionales;
+import javax.swing.*;
+import java.awt.*;
 
 /**
  *
  * @author LENOVO
  */
-public class PanelMultiplicacion {
+public class PanelMultiplicacion extends JPanel{
     
 }
