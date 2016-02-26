@@ -26,14 +26,27 @@ public class Jugador2 extends JPanel{
         imagenBlancas = new ImageIcon("C:/Users/LENOVO/Documents/GitHub/GoGame/GoGame/src/resource/g-white.png").
                 getImage();
         lb = new JLabel("         ", 10);   
-        txtPuntaje2 = new JTextField(" Puntaje jugador ",15);
-        txtPuntaje2.setVisible(true);
-        setLayout(new FlowLayout());           
+        setTxtPuntaje2(new JTextField(" Puntaje jugador ",15));        
+        setLayout(new FlowLayout());
         add(lb);
-        add(txtPuntaje2);
+        add(getTxtPuntaje2());
     }
     @Override
     public void paint(Graphics g){
         g.drawImage(imagenBlancas,0,0,30,30,this);
+    }
+
+    /**
+     * @return the txtPuntaje2
+     */
+    public JTextField getTxtPuntaje2() {
+        return txtPuntaje2;
+    }
+
+    /**
+     * @param txtPuntaje2 the txtPuntaje2 to set
+     */
+    public void setTxtPuntaje2(JTextField txtPuntaje2) {
+        this.txtPuntaje2 = txtPuntaje2;
     }
 }

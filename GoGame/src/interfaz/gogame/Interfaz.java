@@ -19,7 +19,7 @@ import java.awt.event.ActionListener;
 public class Interfaz extends JFrame implements ActionListener{
     private TableroUI tab;
     private Jugador1 p1;
-    private Jugador2 p2;
+    private Jugador2 p2;    
     private JLabel lb;
     private JLabel lb2;
     private JButton btnReiniciar;
@@ -34,20 +34,26 @@ public class Interfaz extends JFrame implements ActionListener{
         tab = new TableroUI();
         p1 = new Jugador1();
         p2 = new Jugador2();
-        lb2 = new JLabel("ñalsdjkflasdjfasd2");
+        btnReiniciar = new JButton("Reiniciar");
         setTitle("Go game");
-        setSize(900, 500);
+        setSize(950, 500);
         setResizable(false);
         setLayout(new BorderLayout());
         add(p1,BorderLayout.WEST);
         add(p2,BorderLayout.EAST);        
         add(tab,BorderLayout.CENTER);
-        
+        add(btnReiniciar,BorderLayout.SOUTH);
+        btnReiniciar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+            }
+        });
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }    
     
     @Override
-    public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void actionPerformed(ActionEvent e) {        
+        
     }
 }
