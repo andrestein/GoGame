@@ -25,6 +25,7 @@ build/
 # binary
 *.class
 *.o
+*.jar
 
 # mo files
 *.mo
