@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mundo.gogame;
+package interfaz.gogame;
 
 import interfaz.gogame.*;
+import java.nio.file.Paths;
 
 /**
  *
