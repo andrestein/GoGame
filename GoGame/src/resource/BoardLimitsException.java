@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gogame;
+package resource;
 
 /**
  *
  * @author audoban
  */
-class Cerco {
+public class BoardLimitsException extends Exception{
     
+    public BoardLimitsException() {
+        
+    }
 }
