@@ -57,13 +57,18 @@ javadoc.splitindex=true
 javadoc.use=true
 javadoc.version=false
 javadoc.windowtitle=
-<<<<<<< Temporary merge branch 1
+<<<<<<< HEAD
+<<<<<<< HEAD
 main.class=gogame.GoGame
 =======
 main.class=interfaz.gogame.Main
->>>>>>> Temporary merge branch 2
+>>>>>>> ea589e85f02940ee05c2081cde497a5766f67561
+=======
+main.class=interfaz.gogame.Main
+=======
 main.class=gogame.GoGame
 >>>>>>> master
+>>>>>>> tablero_graficos
 manifest.file=manifest.mf
 meta.inf.dir=${src.dir}/META-INF
 mkdist.disabled=false
