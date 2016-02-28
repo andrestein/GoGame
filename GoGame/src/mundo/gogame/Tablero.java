@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Tablero {
  
-    private int t; // turno
+    private int t = 1; // turno
     private int[][] estados;
     private ArrayList<Cerco> cerco_negro;
     private ArrayList<Cerco> cerco_blanco;

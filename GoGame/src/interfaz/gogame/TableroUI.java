@@ -13,6 +13,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+import java.awt.event.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.logging.Level;
@@ -25,7 +26,7 @@ import resource.Rect;
  *
  * @author LENOVO
  */
-public class TableroUI extends JPanel implements MouseMotionListener {
+public class TableroUI extends JPanel implements MouseMotionListener,MouseListener {
 
     private Image imgBoard;
     private final BoardInfo boardInfo;
@@ -63,6 +64,10 @@ public class TableroUI extends JPanel implements MouseMotionListener {
             g.drawImage(imgBoard, WIDTH, WIDTH, this);
         }
     }
+    
+    public void mouseListener(MouseEvent e){
+        
+    }
 
     @Override
     public void mouseDragged(MouseEvent e) {
@@ -80,5 +85,30 @@ public class TableroUI extends JPanel implements MouseMotionListener {
      */
     public BoardInfo getBoardInfo() {
         return boardInfo;
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
