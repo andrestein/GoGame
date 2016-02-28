@@ -63,12 +63,14 @@ public class Piedra extends ImageIcon {
                 imagen = new ImageIcon(url.getFile());                
                 setImage(imagen.getImage());
             }
+            break;
             case PiedraNegra:
             {
                 URL url = new URL("file", "localhost", "src/resource/g-black.png");
                 imagen = new ImageIcon(url.getFile());                
                 setImage(imagen.getImage());
             }
+            break;
         }
     }
     

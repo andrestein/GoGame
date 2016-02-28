@@ -114,7 +114,7 @@ public class TableroUI extends JPanel implements MouseMotionListener, MouseListe
         
         // si es 1 entonces dibujo negra sino blanca
         //! La logica de turnos pertenece a Partida
-        int p = partida.getTurno() % 2 == 0 ? 1 : 0;
+        int p = partida.getTurno() % 2 == 0 ? 0 : 1;
        
         if ( !rect.equals(actual[p].getRect()) ) {
             actual[p].clean(g);
@@ -134,9 +134,10 @@ public class TableroUI extends JPanel implements MouseMotionListener, MouseListe
     @Override
     public void mouseClicked(MouseEvent e) 
     {
-        int p = partida.getTurno() % 2 == 0 ? 1 : 0;
+        int p = partida.getTurno() % 2 == 0 ? 0 : 1;
         if ( p == 0 ) {
             blancas.add(new Piedra(actual[p]));
+                        
         } else {
             negras.add(new Piedra(actual[p]));
         }
