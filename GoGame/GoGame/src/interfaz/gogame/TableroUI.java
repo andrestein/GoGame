@@ -55,7 +55,6 @@ public class TableroUI extends JPanel implements MouseMotionListener {
         setSize(size);
     }
 
-    @Override
     public void paint(Graphics g) {
         g.drawImage(imgBoard, 0, 0, 
                 imgBoard.getWidth(null),
@@ -69,14 +68,13 @@ public class TableroUI extends JPanel implements MouseMotionListener {
     public void mouseDragged(MouseEvent e) {
     }
 
-    @Override
     public void mouseMoved(MouseEvent e) {
-        Rect rect = getBoardInfo().getRect(e.getX(), e.getY());
-        if (rect != null){
+        Rect rect = boardInfo.getRect(e.getX(), e.getY());
+        if (rect != null) {
             System.out.println(rect);
         }
     }
-    
+
     /**
      * @return the boardInfo
      */
