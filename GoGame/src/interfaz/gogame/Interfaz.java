@@ -30,12 +30,12 @@ public class Interfaz extends JFrame implements ActionListener {
     private JButton btnCambioTurno;
     
     public Interfaz(){
-        initComponets();
         partida = new Partida(p1, p2);
+        initComponets();        
     }
     
     public void initComponets(){
-        tab = new TableroUI();
+        tab = new TableroUI(partida);
         p1 = new Puntaje(Puntaje.ICON_BLACK);
         p2 = new Puntaje(Puntaje.ICON_WHITE);        
         toolbar = new JToolBar();
@@ -86,21 +86,7 @@ public class Interfaz extends JFrame implements ActionListener {
             p1.clear();
             p2.clear();
         }else if(e.getSource() == btnCambioTurno){
-            getPartida().addTurno();
+            partida.addTurno();
         }
-    }
-
-    /**
-     * @return the partida
-     */
-    public Partida getPartida() {
-        return partida;
-    }
-
-    /**
-     * @param partida the partida to set
-     */
-    public void setPartida(Partida partida) {
-        this.partida = partida;
     }
 }

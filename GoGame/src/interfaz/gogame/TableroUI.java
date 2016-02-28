@@ -41,7 +41,7 @@ public class TableroUI extends JPanel implements MouseMotionListener, MouseListe
     
     int turno = 1;
 
-    public TableroUI() {
+    public TableroUI(Partida partida) {
         super();
         boardInfo = new Board9x9();
         initPiedras();
