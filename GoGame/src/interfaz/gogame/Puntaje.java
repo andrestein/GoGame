@@ -53,6 +53,10 @@ public class Puntaje extends JPanel{
         add(txtPuntaje);
         setBackground(new Color(0xFF9955));
     }
+    
+    public void clear(){
+        txtPuntaje.setText("0");
+    }
     /**
      * @return the txtPuntaje2
      */

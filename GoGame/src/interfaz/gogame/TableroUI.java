@@ -64,6 +64,12 @@ public class TableroUI extends JPanel implements MouseMotionListener, MouseListe
         setPreferredSize(size);
         setSize(size);
     }
+    
+    public void clear(){        
+        blancas.clear();
+        negras.clear();
+        paint(getGraphics());
+    }
 
     public void paint(Graphics g) {
         g.clearRect(0, 0, imgBoard.getWidth(null), imgBoard.getHeight(null));
