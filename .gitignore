@@ -3,6 +3,7 @@
 
 # build directory
 build/
+nbproject/
 
 # files
 *.desktop~

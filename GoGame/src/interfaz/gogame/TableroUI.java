@@ -140,13 +140,14 @@ public class TableroUI extends JPanel implements MouseMotionListener, MouseListe
     @Override
     public void mouseClicked(MouseEvent e) 
     {
-        int p = partida.addTurno() % 2 == 0 ? 1 : 0;
+        int p = partida.getTurno() % 2 == 0 ? 1 : 0;
         if ( p == 0 ) {
             blancas.add(new Piedra(actual[p]));
         } else {
             negras.add(new Piedra(actual[p]));
         }
-        paint(g);
+        partida.addTurno();
+        paint(getGraphics());
     }
 
     @Override
