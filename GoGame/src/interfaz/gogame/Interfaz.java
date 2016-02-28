@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import mundo.gogame.Tablero;
+import resource.BoardInfo;
 import resource.Rect;
 
 
@@ -30,7 +31,8 @@ public class Interfaz extends JFrame implements MouseListener {
     private Tablero tabMundo;
     private Puntaje p1;
     private Puntaje p2;
-    private Image ficha;
+    private ImageIcon imagen;
+    private JLabel lb;
  
     private JButton btnReiniciar;
     
@@ -74,6 +76,44 @@ public class Interfaz extends JFrame implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) { 
+        if(tabMundo.getT() == 1){
+            try {                
+                URL img_black_url = new URL("file", "localhost", "src/resource/g-black");
+                imagen = new ImageIcon(img_black_url.getFile());
+                lb = new JLabel(imagen);
+                BoardInfo rec = tab.getBoardInfo();
+                add(lb,rec);
+                //Metodo para imprimir una ficha negra
+            } catch (MalformedURLException ex) {
+                Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else if(tabMundo.getT()%2 == 0){
+            if(tabMundo.getT() == 1){
+                try {                
+                    URL img_black_url = new URL("file", "localhost", "src/resource/g-white");
+                    imagen = new ImageIcon(img_black_url.getFile());
+                    lb = new JLabel(imagen);
+                    BoardInfo rec = tab.getBoardInfo();
+                    add(lb,rec);
+                
+                } catch (MalformedURLException ex) {
+                    Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }else{
+            if(tabMundo.getT() == 1){
+                    try {                
+                    URL img_black_url = new URL("file", "localhost", "src/resource/g-black");
+                    imagen = new ImageIcon(img_black_url.getFile());
+                    lb = new JLabel(imagen);
+                    BoardInfo rec = tab.getBoardInfo();
+                    add(lb,rec);
+                    //Metodo para imprimir una ficha negra
+                    } catch (MalformedURLException ex) {
+                    Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
     }
 
     @Override

@@ -55,6 +55,7 @@ public class TableroUI extends JPanel implements MouseMotionListener {
         setSize(size);
     }
 
+    @Override
     public void paint(Graphics g) {
         g.drawImage(imgBoard, 0, 0, 
                 imgBoard.getWidth(null),
