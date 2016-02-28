@@ -48,7 +48,7 @@ public class Interfaz extends JFrame implements ActionListener {
         add(box, BorderLayout.SOUTH);
         //add(Box.createVerticalStrut(500), BorderLayout.EAST);
         add(tab, BorderLayout.WEST);
-        //add(btnReiniciar, BorderLayout.SOUTH);
+        //add(btnReiniciar, BorderLayout.NORTH);
         btnReiniciar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
