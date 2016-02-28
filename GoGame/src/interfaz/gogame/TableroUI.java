@@ -18,6 +18,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import mundo.gogame.Partida;
 import resource.Board9x9;
 import resource.BoardInfo;
 import resource.Piedra;
@@ -29,18 +30,21 @@ import resource.Rect;
  */
 public class TableroUI extends JPanel implements MouseMotionListener, MouseListener {
 
+    private Partida partida;
     private Image imgBoard;
     private final BoardInfo boardInfo;
     private Rect rect;
     private Piedra[] actual;
+    
     
     private ArrayList<Piedra> blancas;
     private ArrayList<Piedra> negras;
     
     int turno = 1;
 
-    public TableroUI() {
+    public TableroUI(Partida partida) {
         super();
+        this.partida = partida;
         boardInfo = new Board9x9();
         initPiedras();
         try {
@@ -108,6 +112,7 @@ public class TableroUI extends JPanel implements MouseMotionListener, MouseListe
     public void mouseDragged(MouseEvent e) {
     }
 
+    @Override
     public void mouseMoved(MouseEvent e) {
         Rect rect = boardInfo.getRect(e.getX(), e.getY());
         if (rect == null) return;
@@ -115,7 +120,7 @@ public class TableroUI extends JPanel implements MouseMotionListener, MouseListe
         
         // si es 1 entonces dibujo negra sino blanca
         //! La logica de turnos pertenece a Partida
-        int p = turno % 2 == 0 ? 1 : 0;
+        int p = partida.getTurno() % 2 == 0 ? 1 : 0;
        
         if ( !rect.equals(actual[p].getRect()) ) {
             actual[p].clean(g);
@@ -135,13 +140,13 @@ public class TableroUI extends JPanel implements MouseMotionListener, MouseListe
     @Override
     public void mouseClicked(MouseEvent e) 
     {
-        
-        int p = turno % 2 == 0 ? 1 : 0;
+        int p = partida.addTurno() % 2 == 0 ? 1 : 0;
         if ( p == 0 ) {
             blancas.add(new Piedra(actual[p]));
         } else {
             negras.add(new Piedra(actual[p]));
         }
+        paint(g);
     }
 
     @Override
