@@ -86,7 +86,21 @@ public class Interfaz extends JFrame implements ActionListener {
             p1.clear();
             p2.clear();
         }else if(e.getSource() == btnCambioTurno){
-            partida.addTurno();
+            getPartida().addTurno();
         }
+    }
+
+    /**
+     * @return the partida
+     */
+    public Partida getPartida() {
+        return partida;
+    }
+
+    /**
+     * @param partida the partida to set
+     */
+    public void setPartida(Partida partida) {
+        this.partida = partida;
     }
 }

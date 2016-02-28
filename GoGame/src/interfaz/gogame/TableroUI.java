@@ -18,6 +18,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import mundo.gogame.Partida;
 import resource.Board9x9;
 import resource.BoardInfo;
 import resource.Piedra;
@@ -29,6 +30,7 @@ import resource.Rect;
  */
 public class TableroUI extends JPanel implements MouseMotionListener, MouseListener {
 
+    private Partida partida;
     private Image imgBoard;
     private final BoardInfo boardInfo;
     private Rect rect;
