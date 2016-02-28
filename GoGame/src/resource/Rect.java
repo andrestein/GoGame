@@ -55,5 +55,11 @@ public class Rect {
         return "(" + x + "," + y + ") [" + row + "x" + column + "]";  
     }
     
-    
-}
+    @Override
+    public boolean equals( Object o ) {
+        Rect r = (Rect) o;
+        if ( r.x == x && r.y == y && r.row == row && r.column == column )
+            return true;
+        return false;
+    }
+ }

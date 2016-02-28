@@ -8,9 +8,12 @@ package resource;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.ImageObserver;
+import static java.awt.image.ImageObserver.WIDTH;
 import java.awt.image.ImageProducer;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /**
@@ -22,20 +25,39 @@ public class Piedra extends ImageIcon {
     private Rect rect;
     private PiedraTipo tipo;
     private ImageIcon imagen;
+
+    /**
+     * @return the tipo
+     */
+    public PiedraTipo getTipo() {
+        return tipo;
+    }
     
-    public enum PiedraTipo{
-        PiedraBlanca,PiedraNegra;
-    };
     
-    public Piedra(PiedraTipo tipo, Rect rec ) throws MalformedURLException{
+    public Piedra(PiedraTipo tipo, Rect rect){
         super();
         this.tipo = tipo;
         this.rect = rect;
-        image();
+        try {
+            image();
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(Piedra.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }    
+    
+    public Piedra(Piedra p) {
+        try {
+            rect = p.rect;
+            tipo = p.tipo;
+            imagen = p.imagen;
+            image();
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(Piedra.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     private void image() throws MalformedURLException{
-        switch(tipo){
+        switch(getTipo()){
             case PiedraBlanca:
             {
                 URL url = new URL("file", "localhost", "src/resource/g-white.png");
@@ -50,4 +72,29 @@ public class Piedra extends ImageIcon {
             }
         }
     }
+    
+    public Rect getRect() {
+        return rect;
+    }
+    
+    public void setRect(Rect rect) {
+        this.rect = rect;
+    }
+    
+    public enum PiedraTipo{
+        PiedraBlanca,PiedraNegra;
+    }
+    
+    public void draw( Graphics g, ImageObserver observer ) {
+        g.drawImage(this.getImage(), rect.getX() - getIconWidth() / 2
+                , rect.getY() - getIconHeight() / 2, observer);
+    }
+    
+    public void clean( Graphics g ) {
+        g.clearRect(rect.getX() - getIconWidth() / 2
+                , rect.getY() - getIconHeight() / 2
+                , getIconWidth()
+                , getIconHeight());
+    }
+   
 }

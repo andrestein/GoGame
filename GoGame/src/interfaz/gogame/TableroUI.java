@@ -8,7 +8,6 @@ package interfaz.gogame;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.*;
-import javax.swing.JFrame;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
@@ -16,25 +15,34 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.*;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import resource.Board9x9;
 import resource.BoardInfo;
+import resource.Piedra;
 import resource.Rect;
 
 /**
  *
  * @author LENOVO
  */
-public class TableroUI extends JPanel implements MouseMotionListener,MouseListener {
+public class TableroUI extends JPanel implements MouseMotionListener, MouseListener {
 
     private Image imgBoard;
     private final BoardInfo boardInfo;
     private Rect rect;
+    private Piedra[] actual;
+    
+    private ArrayList<Piedra> blancas;
+    private ArrayList<Piedra> negras;
+    
+    int turno = 1;
 
     public TableroUI() {
         super();
         boardInfo = new Board9x9();
+        initPiedras();
         try {
             initComponets();
         } catch (MalformedURLException ex) {
@@ -44,6 +52,7 @@ public class TableroUI extends JPanel implements MouseMotionListener,MouseListen
 
     private void initComponets() throws MalformedURLException {
         addMouseMotionListener(this);
+        addMouseListener(this);
         setLayout(null);
         setBackground(new Color(0xFF9955));
         URL img_board_url = new URL("file", "localhost", "src/resource/g-board.png");
@@ -57,12 +66,32 @@ public class TableroUI extends JPanel implements MouseMotionListener,MouseListen
     }
 
     public void paint(Graphics g) {
+        g.clearRect(0, 0, imgBoard.getWidth(null), imgBoard.getHeight(null));
         g.drawImage(imgBoard, 0, 0, 
                 imgBoard.getWidth(null),
                 imgBoard.getHeight(null), this);
         if ( rect != null ) {
             g.drawImage(imgBoard, WIDTH, WIDTH, this);
         }
+        drawPiedras(g);
+    }
+    
+    public void initPiedras() {
+        // Capacidad inicial del array
+        blancas = new ArrayList<>(boardInfo.getBoardSize() * 3);
+        negras = new ArrayList<>(boardInfo.getBoardSize() * 3);
+        actual = new Piedra[2];
+        actual[0] = new Piedra(Piedra.PiedraTipo.PiedraBlanca, new Rect(0, 0, 1, 'A'));
+        actual[1] = new Piedra(Piedra.PiedraTipo.PiedraNegra, new Rect(0, 0, 1, 'A'));
+    }
+    
+    public void drawPiedras(Graphics g) 
+    {
+        for ( Piedra piedra : blancas )
+            piedra.draw(g, this);
+        
+        for ( Piedra piedra : negras )
+            piedra.draw(g, this);
     }
     
     public void mouseListener(MouseEvent e){
@@ -75,8 +104,18 @@ public class TableroUI extends JPanel implements MouseMotionListener,MouseListen
 
     public void mouseMoved(MouseEvent e) {
         Rect rect = boardInfo.getRect(e.getX(), e.getY());
-        if (rect != null) {
-            System.out.println(rect);
+        if (rect == null) return;
+        Graphics g = getGraphics();
+        
+        // si es 1 entonces dibujo negra sino blanca
+        //! La logica de turnos pertenece a Partida
+        int p = turno % 2 == 0 ? 1 : 0;
+       
+        if ( !rect.equals(actual[p].getRect()) ) {
+            actual[p].clean(g);
+            paint(g);
+            actual[p].setRect(rect);
+            actual[p].draw(g, this);
         }
     }
 
@@ -88,27 +127,31 @@ public class TableroUI extends JPanel implements MouseMotionListener,MouseListen
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void mouseClicked(MouseEvent e) 
+    {
+        
+        int p = turno % 2 == 0 ? 1 : 0;
+        if ( p == 0 ) {
+            blancas.add(new Piedra(actual[p]));
+        } else {
+            negras.add(new Piedra(actual[p]));
+        }
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
     }
 }
