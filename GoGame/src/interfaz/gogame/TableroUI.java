@@ -36,12 +36,9 @@ public class TableroUI extends JPanel implements MouseMotionListener, MouseListe
     private Rect rect;
     private Piedra[] actual;
     
-    
     private ArrayList<Piedra> blancas;
     private ArrayList<Piedra> negras;
     
-    int turno = 1;
-
     public TableroUI(Partida partida) {
         super();
         this.partida = partida;
@@ -80,9 +77,6 @@ public class TableroUI extends JPanel implements MouseMotionListener, MouseListe
         g.drawImage(imgBoard, 0, 0, 
                 imgBoard.getWidth(null),
                 imgBoard.getHeight(null), this);
-        if ( rect != null ) {
-            g.drawImage(imgBoard, WIDTH, WIDTH, this);
-        }
         drawPiedras(g);
     }
     

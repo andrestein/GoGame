@@ -8,7 +8,6 @@ package resource;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.ImageObserver;
-import static java.awt.image.ImageObserver.WIDTH;
 import java.awt.image.ImageProducer;
 import java.net.MalformedURLException;
 import java.net.URL;
