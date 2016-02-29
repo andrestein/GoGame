@@ -21,6 +21,7 @@ import java.util.logging.Logger;
 import mundo.gogame.Partida;
 import resource.Board9x9;
 import resource.BoardInfo;
+import resource.BoardLimitsException;
 import resource.Piedra;
 import resource.Rect;
 
@@ -43,7 +44,6 @@ public class TableroUI extends JPanel implements MouseMotionListener, MouseListe
         super();
         this.partida = partida;
         boardInfo = new Board9x9();
-        initPiedras();
         try {
             initComponets();
         } catch (MalformedURLException ex) {
@@ -52,6 +52,7 @@ public class TableroUI extends JPanel implements MouseMotionListener, MouseListe
     }
 
     private void initComponets() throws MalformedURLException {
+        initPiedras();
         addMouseMotionListener(this);
         addMouseListener(this);
         setLayout(null);
@@ -72,21 +73,27 @@ public class TableroUI extends JPanel implements MouseMotionListener, MouseListe
         paint(getGraphics());
     }
 
+    @Override
     public void paint(Graphics g) {
         g.clearRect(0, 0, imgBoard.getWidth(null), imgBoard.getHeight(null));
         g.drawImage(imgBoard, 0, 0, 
                 imgBoard.getWidth(null),
-                imgBoard.getHeight(null), this);
+                imgBoard.getHeight(null), null);
         drawPiedras(g);
     }
     
     public void initPiedras() {
-        // Capacidad inicial del array
-        blancas = new ArrayList<>(boardInfo.getBoardSize() * 3);
-        negras = new ArrayList<>(boardInfo.getBoardSize() * 3);
-        actual = new Piedra[2];
-        actual[0] = new Piedra(Piedra.PiedraTipo.PiedraBlanca, new Rect(0, 0, 1, 'A'));
-        actual[1] = new Piedra(Piedra.PiedraTipo.PiedraNegra, new Rect(0, 0, 1, 'A'));
+        try {
+            int size = boardInfo.getBoardSize();
+            // Capacidad inicial del array
+            blancas = new ArrayList<>( (size * size) / 2 );
+            negras = new ArrayList<>( (size * size) / 2 );
+            actual = new Piedra[2];
+            actual[1] = new Piedra(Piedra.PiedraTipo.PiedraNegra, boardInfo.getRect(5, 'E'));
+            actual[0] = new Piedra(Piedra.PiedraTipo.PiedraBlanca, boardInfo.getRect(5, 'E'));
+        } catch (BoardLimitsException ex) {
+            Logger.getLogger(TableroUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void drawPiedras(Graphics g) 
@@ -108,14 +115,13 @@ public class TableroUI extends JPanel implements MouseMotionListener, MouseListe
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        Rect rect = boardInfo.getRect(e.getX(), e.getY());
+        rect = boardInfo.getRect(e.getX(), e.getY());
         if (rect == null) return;
         Graphics g = getGraphics();
         
         // si es 1 entonces dibujo negra sino blanca
         //! La logica de turnos pertenece a Partida
-        int p = partida.getTurno() % 2 == 0 ? 1 : 0;
-       
+        int p = partida.getTurno() % 2;
         if ( !rect.equals(actual[p].getRect()) ) {
             actual[p].clean(g);
             paint(g);
@@ -134,7 +140,7 @@ public class TableroUI extends JPanel implements MouseMotionListener, MouseListe
     @Override
     public void mouseClicked(MouseEvent e) 
     {
-        int p = partida.getTurno() % 2 == 0 ? 1 : 0;
+        int p = partida.getTurno() % 2;
         if ( p == 0 ) {
             blancas.add(new Piedra(actual[p]));
         } else {
@@ -154,10 +160,11 @@ public class TableroUI extends JPanel implements MouseMotionListener, MouseListe
 
     @Override
     public void mouseEntered(MouseEvent e) {
+        actual[ partida.getTurno() % 2 ].draw(getGraphics(), this);
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-    
+        paint(getGraphics());
     }
 }

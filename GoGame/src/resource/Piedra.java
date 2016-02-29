@@ -25,13 +25,13 @@ public class Piedra extends ImageIcon {
     private PiedraTipo tipo;
     private ImageIcon imagen;
 
+    public enum PiedraTipo{ PiedraBlanca, PiedraNegra }
     /**
      * @return the tipo
      */
     public PiedraTipo getTipo() {
         return tipo;
     }
-    
     
     public Piedra(PiedraTipo tipo, Rect rect){
         super();
@@ -56,19 +56,21 @@ public class Piedra extends ImageIcon {
     }
 
     private void image() throws MalformedURLException{
-        switch(getTipo()){
+        switch(tipo){
             case PiedraBlanca:
             {
                 URL url = new URL("file", "localhost", "src/resource/g-white.png");
                 imagen = new ImageIcon(url.getFile());                
                 setImage(imagen.getImage());
             }
+            break;
             case PiedraNegra:
             {
                 URL url = new URL("file", "localhost", "src/resource/g-black.png");
                 imagen = new ImageIcon(url.getFile());                
                 setImage(imagen.getImage());
             }
+            break;
         }
     }
     
@@ -80,19 +82,17 @@ public class Piedra extends ImageIcon {
         this.rect = rect;
     }
     
-    public enum PiedraTipo{
-        PiedraBlanca,PiedraNegra;
-    }
-    
     public void draw( Graphics g, ImageObserver observer ) {
-        g.drawImage(this.getImage(), rect.getX() - getIconWidth() / 2
-                , rect.getY() - getIconHeight() / 2, observer);
+        g.drawImage(getImage()
+                , rect.getX() - getIconWidth() / 2
+                , rect.getY() - getIconHeight() / 2
+                , observer);
     }
     
     public void clean( Graphics g ) {
         g.clearRect(rect.getX() - getIconWidth() / 2
                 , rect.getY() - getIconHeight() / 2
-                , getIconWidth()
+                , getIconWidth() 
                 , getIconHeight());
     }
    
