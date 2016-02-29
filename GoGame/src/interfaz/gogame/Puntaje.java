@@ -17,16 +17,16 @@ import javax.swing.plaf.IconUIResource;
  *
  * @author LENOVO
  */
-public class Puntaje extends JPanel{
-    
+public class Puntaje extends JPanel {
+
     private ImageIcon imagen;
     private JLabel lb;
     private JTextField txtPuntaje;
-    
+
     public final static String ICON_WHITE = "g-white.png";
     public final static String ICON_BLACK = "g-black.png";
-    
-    public Puntaje(String ICON){
+
+    public Puntaje(String ICON) {
         super();
         try {
             initComponets(ICON);
@@ -34,13 +34,13 @@ public class Puntaje extends JPanel{
             Logger.getLogger(Puntaje.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    private void initComponets(String ICON) throws MalformedURLException{
+
+    private void initComponets(String ICON) throws MalformedURLException {
         URL img_black_url = new URL("file", "localhost", "src/resource/" + ICON);
         setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
         imagen = new ImageIcon(img_black_url.getFile());
         Font font = new Font("Monospace", Font.BOLD | Font.TRUETYPE_FONT, 30);
-        lb = new JLabel(" :",imagen,JLabel.CENTER);
+        lb = new JLabel(" :", imagen, JLabel.CENTER);
         lb.setFont(font);
         txtPuntaje = new JTextField("0", 15);
         txtPuntaje.setFont(font);
@@ -53,10 +53,11 @@ public class Puntaje extends JPanel{
         add(txtPuntaje);
         setBackground(new Color(0xFF9955));
     }
-    
-    public void clear(){
+
+    public void clear() {
         txtPuntaje.setText("0");
     }
+
     /**
      * @return the txtPuntaje2
      */

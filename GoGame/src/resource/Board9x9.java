@@ -6,45 +6,50 @@
 package resource;
 
 /**
- *  Modelo estandar de Tablero GO 9x9
+ * Modelo estandar de Tablero GO 9x9
+ *
  * @author audoban
  */
 public class Board9x9 extends BoardInfo {
-   
+
     public Board9x9() {
         super(9, 53);
     }
 
-
     @Override
     public Rect getRect(int r, char c) throws BoardLimitsException {
-        if ( ( r < 1 || r > 9 ) || ( c < 'A' || c > 'I' ) ) {
+        if ((r < 1 || r > 9) || (c < 'A' || c > 'I')) {
             throw new BoardLimitsException();
         }
-        
-        return new Rect(38 + (c - 65) * width, 462 - (r - 1) * width, r, c );
+
+        return new Rect(38 + (c - 65) * width, 462 - (r - 1) * width, r, c);
     }
-    
 
     @Override
     public Rect getRect(int x, int y) {
-        int Ry; int r;
-        int Cx; char c;
-        
-        for ( Ry = 462, r = 1; r <= 10; Ry -= width, r++ ) {
-            if ( r == 10 ) return null;
-            if ( y > Ry - 26 && y < Ry + 27 ) {
+        int Ry;
+        int r;
+        int Cx;
+        char c;
+
+        for (Ry = 462, r = 1; r <= 10; Ry -= width, r++) {
+            if (r == 10) {
+                return null;
+            }
+            if (y > Ry - 26 && y < Ry + 27) {
                 break;
             }
         }
-        for ( Cx = 38, c = 'A'; c <= 'J'; Cx += width, c++ ) {
-            if ( c == 'J' ) return null;
-            if ( x > Cx - 26 && x < Cx + 27  ) {
+        for (Cx = 38, c = 'A'; c <= 'J'; Cx += width, c++) {
+            if (c == 'J') {
+                return null;
+            }
+            if (x > Cx - 26 && x < Cx + 27) {
                 break;
             }
         }
-        
+
         return new Rect(Cx, Ry, r, c);
     }
-        
+
 }

@@ -14,7 +14,7 @@ import java.nio.file.Paths;
  */
 public class Main {
 
-    public static void main(String[]arg){
+    public static void main(String[] arg) {
         Interfaz interfaz = new Interfaz();
         interfaz.setVisible(true);
     }

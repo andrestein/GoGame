@@ -12,14 +12,14 @@ import java.util.ArrayList;
  * @author audoban
  */
 public class Tablero {
- 
+
     private int t = 1; // turno
     private int[][] estados;
     private ArrayList<Cerco> cerco_negro;
     private ArrayList<Cerco> cerco_blanco;
-    
+
     public Tablero() {
-        
+
     }
 
     /**
@@ -78,5 +78,4 @@ public class Tablero {
         this.cerco_blanco = cerco_blanco;
     }
 
-    
 }

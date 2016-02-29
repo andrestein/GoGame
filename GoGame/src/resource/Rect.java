@@ -11,10 +11,10 @@ package resource;
  */
 public class Rect {
 
-    private int x;
-    private int y;
-    private int row;
-    private char column;
+    private final int x;
+    private final int y;
+    private final int row;
+    private final char column;
 
     public Rect(int x, int y, int row, char column) {
         this.x = x;
@@ -22,6 +22,7 @@ public class Rect {
         this.row = row;
         this.column = column;
     }
+
     /**
      * @return the x
      */
@@ -52,14 +53,15 @@ public class Rect {
 
     @Override
     public String toString() {
-        return "(" + x + "," + y + ") [" + row + "x" + column + "]";  
+        return "(" + x + "," + y + ") [" + row + "x" + column + "]";
     }
-    
+
     @Override
-    public boolean equals( Object o ) {
+    public boolean equals(Object o) {
         Rect r = (Rect) o;
-        if ( r.x == x && r.y == y && r.row == row && r.column == column )
+        if (r.x == x && r.y == y && r.row == row && r.column == column) {
             return true;
+        }
         return false;
     }
- }
+}

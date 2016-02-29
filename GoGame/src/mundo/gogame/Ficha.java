@@ -10,30 +10,33 @@ package mundo.gogame;
  * @author LENOVO
  */
 public class Ficha {
+
     private Cruce pos;
     private Color color;
-    
-    enum Color { Negro, Blanco };
-    
-    public Ficha(Cruce pos, Color color){
+
+    enum Color {
+        Negro, Blanco
+    };
+
+    public Ficha(Cruce pos, Color color) {
         this.pos = pos;
         this.color = color;
     }
-    
-    public void getFila(){
-        
+
+    public void getFila() {
+
     }
-    
-    public void getColumna(){
-        
+
+    public void getColumna() {
+
     }
-    
-    public boolean equals(){
+
+    public boolean equals() {
         return true;
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         return "";
     }
 

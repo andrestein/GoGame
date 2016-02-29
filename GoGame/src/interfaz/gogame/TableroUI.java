@@ -36,10 +36,10 @@ public class TableroUI extends JPanel implements MouseMotionListener, MouseListe
     private final BoardInfo boardInfo;
     private Rect rect;
     private Piedra[] actual;
-    
+
     private ArrayList<Piedra> blancas;
     private ArrayList<Piedra> negras;
-    
+
     public TableroUI(Partida partida) {
         super();
         this.partida = partida;
@@ -66,8 +66,8 @@ public class TableroUI extends JPanel implements MouseMotionListener, MouseListe
         setPreferredSize(size);
         setSize(size);
     }
-    
-    public void clear(){        
+
+    public void clear() {
         blancas.clear();
         negras.clear();
         paint(getGraphics());
@@ -76,18 +76,18 @@ public class TableroUI extends JPanel implements MouseMotionListener, MouseListe
     @Override
     public void paint(Graphics g) {
         g.clearRect(0, 0, imgBoard.getWidth(null), imgBoard.getHeight(null));
-        g.drawImage(imgBoard, 0, 0, 
+        g.drawImage(imgBoard, 0, 0,
                 imgBoard.getWidth(null),
                 imgBoard.getHeight(null), null);
         drawPiedras(g);
     }
-    
+
     public void initPiedras() {
         try {
             int size = boardInfo.getBoardSize();
             // Capacidad inicial del array
-            blancas = new ArrayList<>( (size * size) / 2 );
-            negras = new ArrayList<>( (size * size) / 2 );
+            blancas = new ArrayList<>((size * size) / 2);
+            negras = new ArrayList<>((size * size) / 2);
             actual = new Piedra[2];
             actual[1] = new Piedra(Piedra.PiedraTipo.PiedraNegra, boardInfo.getRect(5, 'E'));
             actual[0] = new Piedra(Piedra.PiedraTipo.PiedraBlanca, boardInfo.getRect(5, 'E'));
@@ -95,18 +95,15 @@ public class TableroUI extends JPanel implements MouseMotionListener, MouseListe
             Logger.getLogger(TableroUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void drawPiedras(Graphics g) 
-    {
-        for ( Piedra piedra : blancas )
+
+    public void drawPiedras(Graphics g) {
+        for (Piedra piedra : blancas) {
             piedra.draw(g, this);
-        
-        for ( Piedra piedra : negras )
+        }
+
+        for (Piedra piedra : negras) {
             piedra.draw(g, this);
-    }
-    
-    public void mouseListener(MouseEvent e){
-        
+        }
     }
 
     @Override
@@ -116,13 +113,15 @@ public class TableroUI extends JPanel implements MouseMotionListener, MouseListe
     @Override
     public void mouseMoved(MouseEvent e) {
         rect = boardInfo.getRect(e.getX(), e.getY());
-        if (rect == null) return;
+        if (rect == null) {
+            return;
+        }
         Graphics g = getGraphics();
-        
+
         // si es 1 entonces dibujo negra sino blanca
         //! La logica de turnos pertenece a Partida
         int p = partida.getTurno() % 2;
-        if ( !rect.equals(actual[p].getRect()) ) {
+        if (!rect.equals(actual[p].getRect())) {
             actual[p].clean(g);
             paint(g);
             actual[p].setRect(rect);
@@ -138,12 +137,11 @@ public class TableroUI extends JPanel implements MouseMotionListener, MouseListe
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) 
-    {
+    public void mouseClicked(MouseEvent e) {
         int p = partida.getTurno() % 2;
-        if ( p == 0 ) {
+        if (p == 0) {
             blancas.add(new Piedra(actual[p]));
-                        
+
         } else {
             negras.add(new Piedra(actual[p]));
         }
@@ -161,7 +159,7 @@ public class TableroUI extends JPanel implements MouseMotionListener, MouseListe
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        actual[ partida.getTurno() % 2 ].draw(getGraphics(), this);
+        actual[partida.getTurno() % 2].draw(getGraphics(), this);
     }
 
     @Override
