@@ -9,6 +9,6 @@ package mundo.gogame;
  *
  * @author audoban,Andres
  */
-class Cerco {
+class Territorio {
 
 }

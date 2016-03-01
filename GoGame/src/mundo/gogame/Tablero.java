@@ -16,8 +16,8 @@ import resource.Rect;
  */
 public class Tablero implements Observador {
 
-    private ArrayList<Cerco> cerco_negro;
-    private ArrayList<Cerco> cerco_blanco;
+    private ArrayList<Territorio> cerco_negro;
+    private ArrayList<Territorio> cerco_blanco;
     private ArrayList<Piedras> blancas;
     private ArrayList<Piedras> negras;
     
@@ -38,28 +38,28 @@ public class Tablero implements Observador {
     /**
      * @return the cerco_negro
      */
-    public ArrayList<Cerco> getCerco_negro() {
+    public ArrayList<Territorio> getCerco_negro() {
         return cerco_negro;
     }
 
     /**
      * @param cerco_negro the cerco_negro to set
      */
-    public void setCerco_negro(ArrayList<Cerco> cerco_negro) {
+    public void setCerco_negro(ArrayList<Territorio> cerco_negro) {
         this.cerco_negro = cerco_negro;
     }
 
     /**
      * @return the cerco_blanco
      */
-    public ArrayList<Cerco> getCerco_blanco() {
+    public ArrayList<Territorio> getCerco_blanco() {
         return cerco_blanco;
     }
 
     /**
      * @param cerco_blanco the cerco_blanco to set
      */
-    public void setCerco_blanco(ArrayList<Cerco> cerco_blanco) {
+    public void setCerco_blanco(ArrayList<Territorio> cerco_blanco) {
         this.cerco_blanco = cerco_blanco;
     }
 
