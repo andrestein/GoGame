@@ -5,6 +5,12 @@
  */
 package resource;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 /**
  *
  * @author audoban
@@ -28,5 +34,12 @@ public abstract class BoardInfo implements IBoardInfo {
     @Override
     public String toString() {
         return "Board: " + size + "x" + size;
+    }
+    
+    public Image getResource(String resource) throws MalformedURLException {
+        URL url = new URL("file", "localhost", "src/resource/"+resource);
+        File file = new File(getClass().getResource(resource).getFile());
+        System.out.println("resource.BoardInfo.getResource()" + getClass().getResource(resource).getFile());
+        return Toolkit.getDefaultToolkit().getImage("resource/"+resource);
     }
 }

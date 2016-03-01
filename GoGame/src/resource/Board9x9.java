@@ -5,6 +5,9 @@
  */
 package resource;
 
+import java.awt.Image;
+import java.io.File;
+
 /**
  * Modelo estandar de Tablero GO 9x9
  *
@@ -12,6 +15,10 @@ package resource;
  */
 public class Board9x9 extends BoardInfo {
 
+    public static final String G_BOARD = "g-board.png";
+    public static final String G_BLACK = "g-black.png";
+    public static final String G_WHITE = "g-white.png";
+    
     public Board9x9() {
         super(9, 53);
     }
@@ -51,5 +58,7 @@ public class Board9x9 extends BoardInfo {
 
         return new Rect(Cx, Ry, r, c);
     }
+    
+
 
 }

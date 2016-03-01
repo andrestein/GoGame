@@ -57,7 +57,7 @@ public class Interfaz extends JFrame implements ActionListener {
         add(toolbar, BorderLayout.NORTH);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Go game");
-        setSize(500, 610);
+        setSize(500, 625);
         setResizable(false);
         box.setBackground(new Color(0xFF9955));
         getContentPane().setBackground(new Color(0xFF9955));

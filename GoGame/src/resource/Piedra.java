@@ -6,11 +6,10 @@
 package resource;
 
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -94,6 +93,20 @@ public class Piedra extends ImageIcon {
         g.clearRect(rect.getX() - getIconWidth() / 2
                 , rect.getY() - getIconHeight() / 2
                 , getIconWidth(), getIconHeight());
+    }
+    
+    
+    @Override
+    public boolean equals(Object other) {
+        Piedra p = (Piedra) other;
+        return rect.equals(p.rect) && tipo.equals(p.tipo);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 71 * hash + Objects.hashCode(this.rect);
+        return hash;
     }
 
 }
