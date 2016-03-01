@@ -9,9 +9,9 @@ package resource;
  *
  * @author audoban
  */
-public class BoardLimitsException extends Exception{
-    
+public class BoardLimitsException extends Exception {
+
     public BoardLimitsException() {
-        
+
     }
 }

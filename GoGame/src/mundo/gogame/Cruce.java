@@ -10,23 +10,24 @@ package mundo.gogame;
  * @author LENOVO
  */
 public class Cruce {
+
     private int f; // fila 
     private int c; // columna
-    
-    public Cruce(int f, int c ){
+
+    public Cruce(int f, int c) {
         this.f = f;
         this.c = c;
     }
 
-    public boolean equals(int f,int c){
+    public boolean equals(int f, int c) {
         return this.f == f && this.c == c;
     }
-    
+
     @Override
-    public String toString(){
-        return f+"-"+c;
+    public String toString() {
+        return f + "-" + c;
     }
-    
+
     /**
      * @return the f
      */
@@ -54,6 +55,5 @@ public class Cruce {
     public void setColumna(int c) {
         this.c = c;
     }
-    
-    
+
 }

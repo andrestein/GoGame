@@ -10,5 +10,5 @@ package mundo.gogame;
  * @author audoban
  */
 class Cerco {
-    
+
 }

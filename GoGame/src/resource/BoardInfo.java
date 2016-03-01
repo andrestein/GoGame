@@ -10,20 +10,21 @@ package resource;
  * @author audoban
  */
 public abstract class BoardInfo implements IBoardInfo {
+
     protected final int size;
     // representa el tamanio de los cuadros
     protected final int width;
-    
+
     public BoardInfo(int size, int width) {
         this.size = size;
         this.width = width;
     }
-    
+
     @Override
     public int getBoardSize() {
         return size;
     }
-    
+
     @Override
     public String toString() {
         return "Board: " + size + "x" + size;

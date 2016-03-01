@@ -13,25 +13,25 @@ import interfaz.gogame.TableroUI;
  * @author LENOVO
  */
 public class Partida {
-        
+
     private Puntaje p1;
-    private Puntaje p2;    
+    private Puntaje p2;
     private int turno;
     private TableroUI tab;
-    
-    public Partida(Puntaje p1,Puntaje p2){
+
+    public Partida(Puntaje p1, Puntaje p2) {
         this.p1 = p1;
         this.p2 = p2;
         turno = 1;
     }
-    
-    public Partida reset(){
+
+    public Partida reset() {
         setP1(new Puntaje("g-white.png"));
         setP2(new Puntaje("g-black.png"));
-        turno=1;
+        turno = 1;
         return new Partida(getP1(), getP2());
     }
-    
+
     /**
      * @return the turno
      */
@@ -74,6 +74,5 @@ public class Partida {
     public void setP2(Puntaje p2) {
         this.p2 = p2;
     }
-    
-    
+
 }
