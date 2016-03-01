@@ -38,6 +38,10 @@ public class Partida {
     public int getTurno() {
         return turno;
     }
+    
+    public void setTurno(int turno){
+        this.turno = turno;
+    }
 
     public void addTurno() {
         turno++;

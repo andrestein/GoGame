@@ -3,19 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/audoban/Documentos/Dev/Java/GoGame/GoGame/src/resource/Board9x9.java</file>
-            <file>file:/home/audoban/Documentos/Dev/Java/GoGame/GoGame/src/resource/IBoardInfo.java</file>
-            <file>file:/home/audoban/Documentos/Dev/Java/GoGame/GoGame/src/interfaz/gogame/Piedra.java</file>
-            <file>file:/home/audoban/Documentos/Dev/Java/GoGame/GoGame/src/mundo/gogame/Tablero.java</file>
-            <file>file:/home/audoban/Documentos/Dev/Java/GoGame/GoGame/src/resource/BoardInfo.java</file>
-            <file>file:/home/audoban/Documentos/Dev/Java/GoGame/GoGame/src/resource/Rect.java</file>
-            <file>file:/home/audoban/Documentos/Dev/Java/GoGame/GoGame/src/interfaz/gogame/Interfaz.java</file>
-            <file>file:/home/audoban/Documentos/Dev/Java/GoGame/GoGame/src/mundo/gogame/Cruce.java</file>
-            <file>file:/home/audoban/Documentos/Dev/Java/GoGame/GoGame/src/interfaz/gogame/Main.java</file>
-            <file>file:/home/audoban/Documentos/Dev/Java/GoGame/GoGame/src/interfaz/gogame/Puntaje.java</file>
-            <file>file:/home/audoban/Documentos/Dev/Java/GoGame/GoGame/src/interfaz/gogame/TableroUI.java</file>
-            <file>file:/home/audoban/Documentos/Dev/Java/GoGame/GoGame/src/resource/BoardLimitsException.java</file>
-            <file>file:/home/audoban/Documentos/Dev/Java/GoGame/GoGame/src/resource/g-black.png</file>
+            <file>file:/C:/Users/LENOVO/Documents/GitHub/GoGame/GoGame/src/interfaz/gogame/Puntaje.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/GitHub/GoGame/GoGame/src/mundo/gogame/Tablero.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/GitHub/GoGame/GoGame/src/interfaz/gogame/Interfaz.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/GitHub/GoGame/GoGame/src/mundo/gogame/Partida.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/GitHub/GoGame/GoGame/src/resource/Piedra.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/GitHub/GoGame/GoGame/src/interfaz/gogame/TableroUI.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/GitHub/GoGame/GoGame/src/resource/Rect.java</file>
         </group>
     </open-files>
 </project-private>

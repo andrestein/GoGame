@@ -34,7 +34,7 @@ public class TableroUI extends JPanel implements MouseMotionListener, MouseListe
     private Image imgBoard;
     private final BoardInfo boardInfo;
     private Rect rect;
-    private Piedra[] actual;
+    private Piedra[] actual;    
     
     private ArrayList<Piedra> blancas;
     private ArrayList<Piedra> negras;
@@ -123,7 +123,6 @@ public class TableroUI extends JPanel implements MouseMotionListener, MouseListe
             actual[p].draw(g, this);
         }
     }
-
     /**
      * @return the boardInfo
      */
@@ -135,14 +134,34 @@ public class TableroUI extends JPanel implements MouseMotionListener, MouseListe
     public void mouseClicked(MouseEvent e) 
     {
         int p = partida.getTurno() % 2 == 0 ? 0 : 1;
-        if ( p == 0 ) {
-            blancas.add(new Piedra(actual[p]));
-                        
-        } else {
-            negras.add(new Piedra(actual[p]));
+        if ( p == 0 ){
+            if(blancas.isEmpty()){
+                blancas.add(new Piedra(actual[p]));
+            }else{
+                //if(existe(actual, blancas,p))                
+                blancas.add(new Piedra(actual[p]));
+            }
+        }else{
+            if(negras.isEmpty()){
+                negras.add(new Piedra(actual[p]));
+            }else{
+                //if(existe(actual, negras,p))
+                negras.add(new Piedra(actual[p]));
+            }
         }
         partida.addTurno();
         paint(getGraphics());
+    }
+
+    
+    public boolean existe(Piedra[] piedra,ArrayList<Piedra> piedras,int p){
+        Rect rect = piedra[p].getRect();
+        for (Piedra piedra1 : piedras) {
+            if(piedra1.getRect() == rect){
+                return true;
+            }            
+        }
+        return false;        
     }
 
     @Override

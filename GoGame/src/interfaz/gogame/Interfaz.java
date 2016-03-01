@@ -85,6 +85,7 @@ public class Interfaz extends JFrame implements ActionListener {
             tab.clear();
             p1.clear();
             p2.clear();
+            partida.setTurno(1);
         }else if(e.getSource() == btnCambioTurno){
             partida.addTurno();
         }
