@@ -6,6 +6,8 @@
 package mundo.gogame;
 
 import java.util.ArrayList;
+import resource.Piedra;
+import resource.Rect;
 
 /**
  *
@@ -13,43 +15,25 @@ import java.util.ArrayList;
  */
 public class Tablero {
 
-    private int t = 1; // turno
-    private int[][] estados;
+    
     private ArrayList<Cerco> cerco_negro;
     private ArrayList<Cerco> cerco_blanco;
-
+    
+    
     public Tablero() {
 
     }
-
-    /**
-     * @return the t
-     */
-    public int getT() {
-        return t;
+    
+    public boolean existe(Piedra[] piedra,ArrayList<Piedra> piedras,int p){
+        Rect rect = piedra[p].getRect();
+        for (Piedra piedra1 : piedras) {
+            if(piedra1.getRect().equals(rect)){
+                return true;
+            }
+        }
+        return false;
     }
-
-    /**
-     * @param t the t to set
-     */
-    public void setT(int t) {
-        this.t = t;
-    }
-
-    /**
-     * @return the estados
-     */
-    public int[][] getEstados() {
-        return estados;
-    }
-
-    /**
-     * @param estados the estados to set
-     */
-    public void setEstados(int[][] estados) {
-        this.estados = estados;
-    }
-
+    
     /**
      * @return the cerco_negro
      */

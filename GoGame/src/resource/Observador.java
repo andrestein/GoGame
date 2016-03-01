@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mundo.gogame;
+package resource;
 
 /**
  *
- * @author audoban,Andres
+ * @author LENOVO
  */
-class Cerco {
-
+public interface Observador  {
+    
+    public void actualizarBlancas(Piedra p);
+    
+    public void actualizarNegras(Piedra p);
 }

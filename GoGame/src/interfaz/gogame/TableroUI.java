@@ -40,6 +40,7 @@ public class TableroUI extends JComponent implements MouseMotionListener, MouseL
     private Piedra[] actual;
     private ArrayList<Piedra> blancas;
     private ArrayList<Piedra> negras;
+    private ArrayList<Fichas> fichas;
     
     int i;
 
@@ -142,32 +143,13 @@ public class TableroUI extends JComponent implements MouseMotionListener, MouseL
 
     public void mouseClicked(MouseEvent e) 
     {
-        int p = partida.getTurno() % 2 == 0 ? 0 : 1;
+        int p = partida.getTurno() % 2;
         if ( p == 0 ){
-            if(blancas.isEmpty()){
-                blancas.add(new Piedra(actual[p]));
-            }else{
-                //if(existe(actual, blancas,p))                
-                blancas.add(new Piedra(actual[p]));
-            }
+            blancas.add(new Piedra(actual[p]));            
         }else{
-            if(negras.isEmpty()){
-                negras.add(new Piedra(actual[p]));
-            }else{
-                //if(existe(actual, negras,p))
-                negras.add(new Piedra(actual[p]));
-            }
+            negras.add(new Piedra(actual[p]));
         }
-    }
-    
-    public boolean existe(Piedra[] piedra,ArrayList<Piedra> piedras,int p){
-        Rect rect = piedra[p].getRect();
-        for (Piedra piedra1 : piedras) {
-            if(piedra1.getRect() == rect){
-                return true;
-            }            
-        }
-        return false;        
+        partida.addTurno();        
     }
 
     @Override
