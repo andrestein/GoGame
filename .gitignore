@@ -36,3 +36,4 @@ build/
 *.kdev4
 .kdev4/
 /GoGame/dist/
+/GoGame/nbproject/private/

@@ -10,11 +10,9 @@ import java.awt.Dimension;
 import javax.swing.*;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.*;
-import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -24,6 +22,7 @@ import mundo.gogame.Partida;
 import resource.Board9x9;
 import resource.BoardInfo;
 import resource.BoardLimitsException;
+import resource.Observable;
 import resource.Piedra;
 import resource.Rect;
 
@@ -31,7 +30,8 @@ import resource.Rect;
  *
  * @author LENOVO
  */
-public class TableroUI extends JComponent implements MouseMotionListener, MouseListener {
+public class TableroUI extends JComponent implements MouseMotionListener
+        , MouseListener, Observable {
 
     private Partida partida;
     private Image imgBoard;
@@ -168,5 +168,20 @@ public class TableroUI extends JComponent implements MouseMotionListener, MouseL
     @Override
     public void mouseExited(MouseEvent e) {
         paint(getGraphics());
+    }
+
+    @Override
+    public void addListener(Observable o) {
+        
+    }
+
+    @Override
+    public void removeListener(Observable o) {
+        
+    }
+
+    @Override
+    public void update() {
+    
     }
 }

@@ -6,6 +6,7 @@
 package mundo.gogame;
 
 import java.util.ArrayList;
+import resource.Observador;
 import resource.Piedra;
 import resource.Rect;
 
@@ -13,12 +14,12 @@ import resource.Rect;
  *
  * @author audoban
  */
-public class Tablero {
+public class Tablero implements Observador {
 
-    
     private ArrayList<Cerco> cerco_negro;
     private ArrayList<Cerco> cerco_blanco;
-    
+    private ArrayList<Piedras> blancas;
+    private ArrayList<Piedras> negras;
     
     public Tablero() {
 
@@ -60,6 +61,22 @@ public class Tablero {
      */
     public void setCerco_blanco(ArrayList<Cerco> cerco_blanco) {
         this.cerco_blanco = cerco_blanco;
+    }
+
+    @Override
+    public void updateBlancas(Piedra p) {
+        
+    }
+
+    @Override
+    public void updateNegras(Piedra p) {
+        
+    }
+
+    private static class Piedras {
+
+        public Piedras() {
+        }
     }
 
 }
