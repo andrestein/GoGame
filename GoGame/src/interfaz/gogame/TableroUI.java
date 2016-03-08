@@ -23,29 +23,30 @@ import resource.Board9x9;
 import resource.BoardInfo;
 import resource.BoardLimitsException;
 import resource.Observable;
-import resource.Piedra;
+import resource.Observador;
+import resource.Stone;
 import resource.Rect;
 
 /**
  *
  * @author LENOVO
  */
-public class TableroUI extends JComponent implements MouseMotionListener
-        , MouseListener, Observable {
+public class TableroUI extends JComponent implements Observable, MouseMotionListener, MouseListener {
 
     private Partida partida;
     private Image imgBoard;
     private final BoardInfo boardInfo;
     private Rect rect;
-    private Piedra[] actual;
-    private ArrayList<Piedra> blancas;
-    private ArrayList<Piedra> negras;
-    private ArrayList<Fichas> fichas;
+    private Stone[] actual;
+    private ArrayList<Stone> blancas;
+    private ArrayList<Stone> negras;
     
-    int i;
-
+    private ArrayList<Observador> observadores;
+   
+    
     public TableroUI(Partida partida) {
         super();
+        observadores = new ArrayList<>();
         this.partida = partida;
         boardInfo = new Board9x9();
         try {
@@ -53,10 +54,11 @@ public class TableroUI extends JComponent implements MouseMotionListener
         } catch (MalformedURLException ex) {
             Logger.getLogger(TableroUI.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
     }
 
     private void initComponets() throws MalformedURLException {
-        initPiedras();
+        initStones();
         addMouseMotionListener(this);
         addMouseListener(this);
         setLayout(null);
@@ -69,10 +71,31 @@ public class TableroUI extends JComponent implements MouseMotionListener
         setPreferredSize(size);
         setSize(size);
     }
+    
+    public void initStones() {
+        try {
+            int size = boardInfo.getBoardSize();
+            // Capacidad inicial del array
+            blancas = new ArrayList<>((size * size) / 2);
+            negras = new ArrayList<>((size * size) / 2);
+            actual = new Stone[2];
+            actual[1] = new Stone(Stone.StoneType.StoneBlack, boardInfo.getRect(5, 'E'));
+            actual[0] = new Stone(Stone.StoneType.StoneWhite, boardInfo.getRect(5, 'E'));
+        } catch (BoardLimitsException ex) {
+            Logger.getLogger(TableroUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
+    /**
+     * @return the boardInfo
+     */
+    public BoardInfo getBoardInfo() {
+        return boardInfo;
+    }
+    
     public void clear() {
-        blancas.clear();
-        negras.clear();
+        getBlancas().clear();
+        getNegras().clear();
         paint(getGraphics());
     }
 
@@ -82,38 +105,19 @@ public class TableroUI extends JComponent implements MouseMotionListener
                 imgBoard.getWidth(this),
                 imgBoard.getHeight(this), 
                 this);
-        drawPiedras();
+        drawStones();
     }
 
-    public void initPiedras() {
-        try {
-            int size = boardInfo.getBoardSize();
-            // Capacidad inicial del array
-            blancas = new ArrayList<>((size * size) / 2);
-            negras = new ArrayList<>((size * size) / 2);
-            actual = new Piedra[2];
-            actual[1] = new Piedra(Piedra.PiedraTipo.PiedraNegra, boardInfo.getRect(5, 'E'));
-            actual[0] = new Piedra(Piedra.PiedraTipo.PiedraBlanca, boardInfo.getRect(5, 'E'));
-        } catch (BoardLimitsException ex) {
-            Logger.getLogger(TableroUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 
-    public void drawPiedras() {
-        for (Piedra piedra : blancas) {
+    public void drawStones() {
+        for (Stone piedra : getBlancas()) {
             piedra.draw(getGraphics(), this);
         }
-
-        for (Piedra piedra : negras) {
+        for (Stone piedra : getNegras()) {
             piedra.draw(getGraphics(), this);
         }
     }
 
-    @Override
-    public void mouseDragged(MouseEvent e) {
-    }
-
-    @Override
     public void mouseMoved(MouseEvent e) {
         rect = boardInfo.getRect(e.getX(), e.getY());
         if (rect == null) {
@@ -125,40 +129,26 @@ public class TableroUI extends JComponent implements MouseMotionListener
         //! La logica de turnos pertenece a Partida
         int p = partida.getTurno() % 2;
         if (!rect.equals(actual[p].getRect())) {
-            actual[p].clean(g);
+            actual[p].clear(g);
             actual[p].setRect(rect);
             paint(g);
             actual[p].draw(g, this);
         }
 
     }
-    /**
-     * @return the boardInfo
-     */
-    public BoardInfo getBoardInfo() {
-        return boardInfo;
-    }
 
     @Override
-
     public void mouseClicked(MouseEvent e) 
     {
         int p = partida.getTurno() % 2;
         if ( p == 0 ){
-            blancas.add(new Piedra(actual[p]));            
+            getBlancas().add(new Stone(actual[p]));            
         }else{
-            negras.add(new Piedra(actual[p]));
+            getNegras().add(new Stone(actual[p]));
         }
         partida.addTurno();        
     }
 
-    @Override
-    public void mousePressed(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-    }
 
     @Override
     public void mouseEntered(MouseEvent e) {
@@ -171,17 +161,46 @@ public class TableroUI extends JComponent implements MouseMotionListener
     }
 
     @Override
-    public void addListener(Observable o) {
-        
+    public void addListener(Observador o) {
+        observadores.add(o);
     }
 
     @Override
-    public void removeListener(Observable o) {
-        
+    public void removeListener(Observador o) {
+        observadores.add(o);
     }
 
     @Override
     public void update() {
-    
+        for ( Observador obs : observadores  ) {
+            obs.update(obs);
+        }
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+ 
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+    }
+
+    /**
+     * @return the blancas
+     */
+    public ArrayList<Stone> getBlancas() {
+        return blancas;
+    }
+
+    /**
+     * @return the negras
+     */
+    public ArrayList<Stone> getNegras() {
+        return negras;
     }
 }

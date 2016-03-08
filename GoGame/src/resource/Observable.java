@@ -10,7 +10,7 @@ package resource;
  * @author audoban
  */
 public interface Observable {
-    public void addListener(Observable o);
-    public void removeListener(Observable o);
+    public void addListener(Observador o);
+    public void removeListener(Observador o);
     public void update();
 }

@@ -7,8 +7,10 @@ package mundo.gogame;
 
 import java.util.ArrayList;
 import resource.Observador;
-import resource.Piedra;
+
+import resource.Stone;
 import resource.Rect;
+
 
 /**
  *
@@ -18,16 +20,16 @@ public class Tablero implements Observador {
 
     private ArrayList<Territorio> cerco_negro;
     private ArrayList<Territorio> cerco_blanco;
-    private ArrayList<Piedras> blancas;
-    private ArrayList<Piedras> negras;
+    private ArrayList<Stone> blancas;
+    private ArrayList<Stone> negras;
     
     public Tablero() {
 
     }
     
-    public boolean existe(Piedra[] piedra,ArrayList<Piedra> piedras,int p){
-        Rect rect = piedra[p].getRect();
-        for (Piedra piedra1 : piedras) {
+    public boolean existe(Stone stone){
+        Rect rect = blancas[p].getRect();
+        for (Stone piedra1 : blancas) {
             if(piedra1.getRect().equals(rect)){
                 return true;
             }
@@ -64,19 +66,17 @@ public class Tablero implements Observador {
     }
 
     @Override
-    public void updateBlancas(Piedra p) {
-        
+    public void update(Object o) {
+         
     }
 
-    @Override
-    public void updateNegras(Piedra p) {
-        
+    void setBlancas(ArrayList<Stone> blancas) {
+        this.blancas = blancas;
     }
 
-    private static class Piedras {
-
-        public Piedras() {
-        }
+    void setNegras(ArrayList<Stone> negras) {
+        this.negras = negras;
     }
+    
 
 }

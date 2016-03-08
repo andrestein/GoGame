@@ -7,6 +7,9 @@ package mundo.gogame;
 
 import interfaz.gogame.Puntaje;
 import interfaz.gogame.TableroUI;
+import java.util.ArrayList;
+import resource.Observador;
+import resource.Stone;
 
 /**
  *
@@ -17,12 +20,13 @@ public class Partida {
     private Puntaje p1;
     private Puntaje p2;
     private int turno;
-    private TableroUI tab;
+    private Tablero tab;
 
     public Partida(Puntaje p1, Puntaje p2) {
         this.p1 = p1;
         this.p2 = p2;
         turno = 1;
+        tab = new Tablero();
     }
 
     public Partida reset() {
@@ -73,6 +77,15 @@ public class Partida {
      */
     public void setP2(Puntaje p2) {
         this.p2 = p2;
+    }
+
+    public Observador getTablero() {
+       return tab;
+    }
+
+    public void setStones(ArrayList<Stone> negras, ArrayList<Stone> blancas) {
+        tab.setBlancas(blancas);
+        tab.setNegras(negras);
     }
 
 }

@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import mundo.gogame.Partida;
+import mundo.gogame.Tablero;
 
 /**
  *
@@ -20,7 +21,7 @@ import mundo.gogame.Partida;
  */
 public class Interfaz extends JFrame implements ActionListener {
 
-    private TableroUI tab;
+    private TableroUI tabUI;
     private Partida partida;
     private Puntaje p1;
     private Puntaje p2;
@@ -31,10 +32,12 @@ public class Interfaz extends JFrame implements ActionListener {
     public Interfaz() {
         partida = new Partida(p1, p2);
         initComponets();
+        tabUI.addListener(partida.getTablero());
+        partida.setStones( tabUI.getNegras(), tabUI.getBlancas() );
     }
 
     public void initComponets() {
-        tab = new TableroUI(partida);
+        tabUI = new TableroUI(partida);
         p1 = new Puntaje(Puntaje.ICON_BLACK);
         p2 = new Puntaje(Puntaje.ICON_WHITE);
         toolbar = new JToolBar();
@@ -53,7 +56,7 @@ public class Interfaz extends JFrame implements ActionListener {
         add(box, BorderLayout.SOUTH);
 
         //add(Box.createVerticalStrut(500), BorderLayout.EAST);
-        add(tab, BorderLayout.WEST);
+        add(tabUI, BorderLayout.WEST);
         add(toolbar, BorderLayout.NORTH);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Go game");
@@ -78,7 +81,7 @@ public class Interfaz extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnReiniciar) {
-            tab.clear();
+            tabUI.clear();
             p1.clear();
             p2.clear();
             partida.setTurno(1);

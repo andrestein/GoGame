@@ -18,57 +18,57 @@ import javax.swing.ImageIcon;
  *
  * @author audoban
  */
-public class Piedra extends ImageIcon {
+public class Stone extends ImageIcon{
 
     private Rect rect;
-    private PiedraTipo tipo;
-    private ImageIcon imagen;
+    private StoneType type;
+    private ImageIcon img;
 
-    public enum PiedraTipo {
-        PiedraBlanca, PiedraNegra
+    public enum StoneType {
+        StoneWhite, StoneBlack
     }
 
     /**
      * @return the tipo
      */
-    public PiedraTipo getTipo() {
-        return tipo;
+    public StoneType getType() {
+        return type;
     }
 
-    public Piedra(PiedraTipo tipo, Rect rect) {
+    public Stone(StoneType tipo, Rect rect) {
         super();
-        this.tipo = tipo;
+        this.type = tipo;
         this.rect = rect;
         try {
-            image();
+            loadImage();
         } catch (MalformedURLException ex) {
-            Logger.getLogger(Piedra.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Stone.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public Piedra(Piedra p) {
+    public Stone(Stone p) {
         try {
             rect = p.rect;
-            tipo = p.tipo;
-            imagen = p.imagen;
-            image();
+            type = p.type;
+            img = p.img;
+            loadImage();
         } catch (MalformedURLException ex) {
-            Logger.getLogger(Piedra.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Stone.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    private void image() throws MalformedURLException {
-        switch (tipo) {
-            case PiedraBlanca: {
+    private void loadImage() throws MalformedURLException {
+        switch (type) {
+            case StoneWhite: {
                 URL url = new URL("file", "localhost", "src/resource/g-white.png");
-                imagen = new ImageIcon(url.getFile());
-                setImage(imagen.getImage());
+                img = new ImageIcon(url.getFile());
+                setImage(img.getImage());
             }
             break;
-            case PiedraNegra: {
+            case StoneBlack: {
                 URL url = new URL("file", "localhost", "src/resource/g-black.png");
-                imagen = new ImageIcon(url.getFile());
-                setImage(imagen.getImage());
+                img = new ImageIcon(url.getFile());
+                setImage(img.getImage());
             }
             break;
         }
@@ -89,7 +89,7 @@ public class Piedra extends ImageIcon {
                 , observer);
     }
 
-    public void clean(Graphics g) {
+    public void clear(Graphics g) {
         g.clearRect(rect.getX() - getIconWidth() / 2
                 , rect.getY() - getIconHeight() / 2
                 , getIconWidth(), getIconHeight());
@@ -98,8 +98,8 @@ public class Piedra extends ImageIcon {
     
     @Override
     public boolean equals(Object other) {
-        Piedra p = (Piedra) other;
-        return rect.equals(p.rect) && tipo.equals(p.tipo);
+        Stone p = (Stone) other;
+        return rect.equals(p.rect) && type.equals(p.type);
     }
 
     @Override

@@ -7,11 +7,10 @@ package resource;
 
 /**
  *
- * @author LENOVO
+ * @author audoban
  */
-public interface Observador  {
+public interface Observador {
     
-    public void updateBlancas(Piedra p);
+    public void update( Object o );
     
-    public void updateNegras(Piedra p);
 }
