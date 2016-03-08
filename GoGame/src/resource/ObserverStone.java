@@ -9,9 +9,10 @@ package resource;
  *
  * @author LENOVO
  */
-public interface Observador  {
+public interface ObserverStone {
     
-    public void updateBlancas(Piedra p);
+    public void updateBlack(Stone data);
+
+    public void updateWhite(Stone data);
     
-    public void updateNegras(Piedra p);
 }

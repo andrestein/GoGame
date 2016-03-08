@@ -30,8 +30,7 @@ import resource.Rect;
  *
  * @author LENOVO
  */
-public class TableroUI extends JComponent implements MouseMotionListener
-        , MouseListener, Observable {
+public class TableroUI extends JComponent implements Observable, MouseMotionListener, MouseListener {
 
     private Partida partida;
     private Image imgBoard;
@@ -40,10 +39,8 @@ public class TableroUI extends JComponent implements MouseMotionListener
     private Piedra[] actual;
     private ArrayList<Piedra> blancas;
     private ArrayList<Piedra> negras;
-    private ArrayList<Fichas> fichas;
+   
     
-    int i;
-
     public TableroUI(Partida partida) {
         super();
         this.partida = partida;
@@ -53,6 +50,7 @@ public class TableroUI extends JComponent implements MouseMotionListener
         } catch (MalformedURLException ex) {
             Logger.getLogger(TableroUI.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
     }
 
     private void initComponets() throws MalformedURLException {
@@ -69,7 +67,28 @@ public class TableroUI extends JComponent implements MouseMotionListener
         setPreferredSize(size);
         setSize(size);
     }
+    
+    public void initPiedras() {
+        try {
+            int size = boardInfo.getBoardSize();
+            // Capacidad inicial del array
+            blancas = new ArrayList<>((size * size) / 2);
+            negras = new ArrayList<>((size * size) / 2);
+            actual = new Piedra[2];
+            actual[1] = new Piedra(Piedra.PiedraTipo.PiedraNegra, boardInfo.getRect(5, 'E'));
+            actual[0] = new Piedra(Piedra.PiedraTipo.PiedraBlanca, boardInfo.getRect(5, 'E'));
+        } catch (BoardLimitsException ex) {
+            Logger.getLogger(TableroUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
+    /**
+     * @return the boardInfo
+     */
+    public BoardInfo getBoardInfo() {
+        return boardInfo;
+    }
+    
     public void clear() {
         blancas.clear();
         negras.clear();
@@ -85,35 +104,16 @@ public class TableroUI extends JComponent implements MouseMotionListener
         drawPiedras();
     }
 
-    public void initPiedras() {
-        try {
-            int size = boardInfo.getBoardSize();
-            // Capacidad inicial del array
-            blancas = new ArrayList<>((size * size) / 2);
-            negras = new ArrayList<>((size * size) / 2);
-            actual = new Piedra[2];
-            actual[1] = new Piedra(Piedra.PiedraTipo.PiedraNegra, boardInfo.getRect(5, 'E'));
-            actual[0] = new Piedra(Piedra.PiedraTipo.PiedraBlanca, boardInfo.getRect(5, 'E'));
-        } catch (BoardLimitsException ex) {
-            Logger.getLogger(TableroUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 
     public void drawPiedras() {
         for (Piedra piedra : blancas) {
             piedra.draw(getGraphics(), this);
         }
-
         for (Piedra piedra : negras) {
             piedra.draw(getGraphics(), this);
         }
     }
 
-    @Override
-    public void mouseDragged(MouseEvent e) {
-    }
-
-    @Override
     public void mouseMoved(MouseEvent e) {
         rect = boardInfo.getRect(e.getX(), e.getY());
         if (rect == null) {
@@ -132,14 +132,6 @@ public class TableroUI extends JComponent implements MouseMotionListener
         }
 
     }
-    /**
-     * @return the boardInfo
-     */
-    public BoardInfo getBoardInfo() {
-        return boardInfo;
-    }
-
-    @Override
 
     public void mouseClicked(MouseEvent e) 
     {
@@ -152,20 +144,11 @@ public class TableroUI extends JComponent implements MouseMotionListener
         partida.addTurno();        
     }
 
-    @Override
-    public void mousePressed(MouseEvent e) {
-    }
 
-    @Override
-    public void mouseReleased(MouseEvent e) {
-    }
-
-    @Override
     public void mouseEntered(MouseEvent e) {
         actual[partida.getTurno() % 2].draw(getGraphics(), this);
     }
 
-    @Override
     public void mouseExited(MouseEvent e) {
         paint(getGraphics());
     }
@@ -183,5 +166,18 @@ public class TableroUI extends JComponent implements MouseMotionListener
     @Override
     public void update() {
     
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+ 
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
     }
 }
