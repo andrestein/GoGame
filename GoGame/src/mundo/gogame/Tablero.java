@@ -6,17 +6,18 @@
 package mundo.gogame;
 
 import java.util.ArrayList;
-import resource.Observador;
+import resource.IPiedra;
 
 import resource.Stone;
 import resource.Rect;
+import resource.TableroObservador;
 
 
 /**
  *
  * @author audoban
  */
-public class Tablero implements Observador {
+public class Tablero implements TableroObservador {
 
     private ArrayList<Territorio> cerco_negro;
     private ArrayList<Territorio> cerco_blanco;

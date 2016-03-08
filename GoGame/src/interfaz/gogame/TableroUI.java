@@ -136,8 +136,6 @@ public class TableroUI extends JComponent implements Observable, MouseMotionList
         }
 
     }
-
-    @Override
     public void mouseClicked(MouseEvent e) 
     {
         int p = partida.getTurno() % 2;
@@ -150,12 +148,10 @@ public class TableroUI extends JComponent implements Observable, MouseMotionList
     }
 
 
-    @Override
     public void mouseEntered(MouseEvent e) {
         actual[partida.getTurno() % 2].draw(getGraphics(), this);
     }
 
-    @Override
     public void mouseExited(MouseEvent e) {
         paint(getGraphics());
     }

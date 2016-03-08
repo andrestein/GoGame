@@ -9,8 +9,10 @@ package resource;
  *
  * @author audoban
  */
-public interface Observable {
+public interface IStone {
     public void addListener(Observador o);
     public void removeListener(Observador o);
-    public void update();
+    
+    public void setRect(Rect rect);
+    
 }
