@@ -6,18 +6,17 @@
 package mundo.gogame;
 
 import java.util.ArrayList;
-import resource.IPiedra;
 
 import resource.Stone;
 import resource.Rect;
-import resource.TableroObservador;
+import resource.Observador;
 
 
 /**
  *
  * @author audoban
  */
-public class Tablero implements TableroObservador {
+public class Tablero implements Observador {
 
     private ArrayList<Territorio> cerco_negro;
     private ArrayList<Territorio> cerco_blanco;
@@ -29,12 +28,6 @@ public class Tablero implements TableroObservador {
     }
     
     public boolean existe(Stone stone){
-        Rect rect = blancas[p].getRect();
-        for (Stone piedra1 : blancas) {
-            if(piedra1.getRect().equals(rect)){
-                return true;
-            }
-        }
         return false;
     }
     

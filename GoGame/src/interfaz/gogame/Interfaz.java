@@ -19,7 +19,7 @@ import mundo.gogame.Tablero;
  *
  * @author LENOVO
  */
-public class Interfaz extends JFrame implements ActionListener {
+public final class Interfaz extends JFrame implements ActionListener {
 
     private TableroUI tabUI;
     private Partida partida;
@@ -32,7 +32,7 @@ public class Interfaz extends JFrame implements ActionListener {
     public Interfaz() {
         partida = new Partida(p1, p2);
         initComponets();
-        tabUI.addListener(partida.getTablero());
+        tabUI.addObservable( partida.getTablero() );
         partida.setStones( tabUI.getNegras(), tabUI.getBlancas() );
     }
 

@@ -11,6 +11,6 @@ package resource;
  */
 public interface Observador {
     
-    public void update( Object o );
+    public void update(Object o);
     
 }

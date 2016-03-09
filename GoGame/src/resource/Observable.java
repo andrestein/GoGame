@@ -9,10 +9,11 @@ package resource;
  *
  * @author audoban
  */
-public interface StoneObservable {
+public interface Observable {
     
-    public void addObserver(IStone o);
-    public void deleteObserver(IStone o);
-    public void notifyObservers();
+    public void addObservable(Observador o);
     
+    public void removeObservable(Observador o);
+    
+    public void update();
 }

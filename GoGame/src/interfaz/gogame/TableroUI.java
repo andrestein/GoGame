@@ -157,12 +157,12 @@ public class TableroUI extends JComponent implements Observable, MouseMotionList
     }
 
     @Override
-    public void addListener(Observador o) {
+    public void addObservable(Observador o) {
         observadores.add(o);
     }
 
     @Override
-    public void removeListener(Observador o) {
+    public void removeObservable(Observador o) {
         observadores.add(o);
     }
 
@@ -175,7 +175,6 @@ public class TableroUI extends JComponent implements Observable, MouseMotionList
 
     @Override
     public void mouseDragged(MouseEvent e) {
- 
     }
 
     @Override

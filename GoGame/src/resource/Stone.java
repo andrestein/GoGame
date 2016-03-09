@@ -18,7 +18,7 @@ import javax.swing.ImageIcon;
  *
  * @author audoban
  */
-public class Stone extends ImageIcon{
+public class Stone extends ImageIcon {
 
     private Rect rect;
     private StoneType type;
