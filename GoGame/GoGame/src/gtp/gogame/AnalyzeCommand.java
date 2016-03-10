@@ -3,6 +3,7 @@
 package gtp.gogame;
 
 import java.io.File;
+import resource.Stone;
 import static resource.Stone.StoneType.BLACK;
 import static resource.Stone.StoneType.WHITE;
 
@@ -20,7 +21,7 @@ public class AnalyzeCommand
         return m_definition.getLabel();
     }
 
-    public GoColor getColorArg()
+    public Stone.StoneType getColorArg()
     {
         return m_colorArg;
     }
@@ -49,7 +50,6 @@ public class AnalyzeCommand
                 buffer.append(" Black");
             else
             {
-                assert m_colorArg == WHITE;
                 buffer.append(" White");
             }
         }
@@ -138,66 +138,66 @@ public class AnalyzeCommand
         return m_definition.needsOptStringArg();
     }
 
-    public String replaceWildCards(GoColor toMove)
-    {
-        String command = m_definition.getCommand();
-        String toMoveString = (toMove == BLACK ? "b" : "w");
-        String result = command.replace("%m", toMoveString);
-        if (needsPointArg() && m_pointArg != null)
-            result = result.replace("%p", m_pointArg.toString());
-        if (needsPointListArg())
-        {
-            String pointList = GoPoint.toString(m_pointListArg);
-            if (getType() == AnalyzeType.EPLIST
-                && m_pointListArg.size() > 0)
-                result = result + ' ' + pointList;
-            else
-                result = result.replace("%P", pointList);
-        }
-        if (needsFileArg())
-        {
-            String fileArg = m_fileArg.toString();
-            if (fileArg.indexOf(' ') >= 0)
-                fileArg = "\"" + fileArg + "\"";
-            result = result.replace("%f", fileArg);
-        }
-        if (needsFileOpenArg())
-        {
-            String fileOpenArg = m_fileOpenArg.toString();
-            if (fileOpenArg.indexOf(' ') >= 0)
-                fileOpenArg = "\"" + fileOpenArg + "\"";
-            result = result.replace("%r", fileOpenArg);
-        }
-        if (needsFileSaveArg())
-        {
-            String fileSaveArg = m_fileSaveArg.toString();
-            if (fileSaveArg.indexOf(' ') >= 0)
-                fileSaveArg = "\"" + fileSaveArg + "\"";
-            result = result.replace("%w", fileSaveArg);
-        }
-        if (needsStringArg())
-        {
-            assert m_stringArg != null;
-            result = result.replace("%s", m_stringArg);
-        }
-        if (needsOptStringArg())
-        {
-            assert m_optStringArg != null;
-            result = result.replace("%o", m_optStringArg);
-        }
-        if (needsColorArg())
-        {
-            String colorString = "empty";
-            if (m_colorArg == BLACK)
-                colorString = "b";
-            else if (m_colorArg == WHITE)
-                colorString = "w";
-            result = result.replace("%c", colorString);
-        }
-        return result;
-    }
+//    public String replaceWildCards(Stone.StoneType toMove)
+//    {
+//        String command = m_definition.getCommand();
+//        String toMoveString = (toMove == BLACK ? "b" : "w");
+//        String result = command.replace("%m", toMoveString);
+//        if (needsPointArg() && m_pointArg != null)
+//            result = result.replace("%p", m_pointArg.toString());
+//        if (needsPointListArg())
+//        {
+//            String pointList = GoPoint.toString(m_pointListArg);
+//            if (getType() == AnalyzeType.EPLIST
+//                && m_pointListArg.size() > 0)
+//                result = result + ' ' + pointList;
+//            else
+//                result = result.replace("%P", pointList);
+//        }
+//        if (needsFileArg())
+//        {
+//            String fileArg = m_fileArg.toString();
+//            if (fileArg.indexOf(' ') >= 0)
+//                fileArg = "\"" + fileArg + "\"";
+//            result = result.replace("%f", fileArg);
+//        }
+//        if (needsFileOpenArg())
+//        {
+//            String fileOpenArg = m_fileOpenArg.toString();
+//            if (fileOpenArg.indexOf(' ') >= 0)
+//                fileOpenArg = "\"" + fileOpenArg + "\"";
+//            result = result.replace("%r", fileOpenArg);
+//        }
+//        if (needsFileSaveArg())
+//        {
+//            String fileSaveArg = m_fileSaveArg.toString();
+//            if (fileSaveArg.indexOf(' ') >= 0)
+//                fileSaveArg = "\"" + fileSaveArg + "\"";
+//            result = result.replace("%w", fileSaveArg);
+//        }
+//        if (needsStringArg())
+//        {
+//            assert m_stringArg != null;
+//            result = result.replace("%s", m_stringArg);
+//        }
+//        if (needsOptStringArg())
+//        {
+//            assert m_optStringArg != null;
+//            result = result.replace("%o", m_optStringArg);
+//        }
+//        if (needsColorArg())
+//        {
+//            String colorString = "empty";
+//            if (m_colorArg == BLACK)
+//                colorString = "b";
+//            else if (m_colorArg == WHITE)
+//                colorString = "w";
+//            result = result.replace("%c", colorString);
+//        }
+//        return result;
+//    }
 
-    public void setColorArg(GoColor color)
+    public void setColorArg(Stone.StoneType color)
     {
         assert needsColorArg();
         m_colorArg = color;
@@ -245,7 +245,7 @@ public class AnalyzeCommand
 
     private final AnalyzeDefinition m_definition;
 
-    private GoColor m_colorArg;
+    private Stone.StoneType m_colorArg;
 
     private File m_fileArg;
 

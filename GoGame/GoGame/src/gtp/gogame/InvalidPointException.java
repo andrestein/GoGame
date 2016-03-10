@@ -1,6 +1,6 @@
 // InvalidPointException.java
 
-package net.sf.gogui.go;
+package gtp.gogame;
 
 /** Thrown if parsing a string representation of a GoPoint fails. */
 public class InvalidPointException
