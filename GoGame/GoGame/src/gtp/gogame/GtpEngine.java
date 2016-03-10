@@ -11,7 +11,7 @@ import java.io.PrintStream;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
-import net.sf.gogui.util.StringUtil;
+import gtp.gogame.StringUtil;
 
 /** Base class for Go programs and tools implementing GTP. */
 public class GtpEngine
