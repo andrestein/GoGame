@@ -1,6 +1,6 @@
 // GoColor.java
 
-package net.sf.gogui.go;
+package gtp.gogame;
 
 import java.util.ArrayList;
 import java.util.Collections;

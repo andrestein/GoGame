@@ -5,12 +5,12 @@ package gtp.gogame;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Locale;
-import net.sf.gogui.go.GoColor;
+import gtp.gogame.GoColor;
 import static net.sf.gogui.go.GoColor.BLACK;
 import static net.sf.gogui.go.GoColor.WHITE;
-import net.sf.gogui.go.GoPoint;
+import gtp.gogame.GoPoint;
 import net.sf.gogui.go.Move;
-import net.sf.gogui.util.StringUtil;
+import gtp.gogame.StringUtil;
 
 /** Interface to a Go program that uses GTP.
     This class implements most of the functionality of a connection to a GTP
