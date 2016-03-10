@@ -1,0 +1,79 @@
+#include "servidor.h"
+#include "mapachar.h"
+#include <iostream>
+#include <cmath>
+
+#include <QString>
+#include <QNetworkConfiguration>
+#include <QNetworkConfigurationManager>
+
+class QSettings;
+
+<<<<<<< HEAD
+using namespace std;
+=======
+long long a=0;
+long long b=0;
+>>>>>>> origin/master
+
+Servidor::Servidor(QStringLiteral ip, QStringLiteral puerto)
+{
+    a = rand();
+    b = rand();
+
+}
+
+long long getNumA()const{
+    return a;
+}
+
+long long getNumB()const{
+    return b;
+}
+
+QString encriptar(QString mensaje){
+    a = getNumA();
+    b = getNumB();
+    long long operacion = 0;
+    QString cadena;
+
+    for(int i = 0; i< mensaje.size();i++){
+        operacion = 0;
+        for(int j = 0; j<mensaje.size();i++){
+            if(mensaje[i] == chars[j] ){
+                operacion = a*(j) + b;
+                operacion = (static_cast <long double> (operacion)%103);
+                cadena += floor (operacion);
+            }
+        }
+    }
+    mensaje = cadena;
+
+    return mesaje;
+}
+
+
+
+void Servidor::abrirSesion() {
+    QNetworkConfigurationManager manager;
+    // Si esta bandera esta activa la plataforma
+    if(manager.capabilities() & QNetworkConfigurationManager::NetworkSessionRequired) {
+        // Obtenemos las configuraciones
+        QSettings config(QSettings::UserScope, QStringLiteral("Encriptador"));
+        config.beginGroup(QLatin1String("Conexion"));
+        const QString id = config.value(QLatin1String("DefaultNetworkConfiguration")).toString();
+        QNetworkConfiguration netConfig = manager.configurationFromIdentifier(id);
+        if ((netConfig.state() & QNetworkConfiguration::Discovered) != QNetworkConfiguration::Discovered) {
+            netConfig = manager.defaultConfiguration();
+        }
+
+        sesion = new QNetworkSession(netConfig, this);
+        connect(sesion, SIGNAL(opened()), this, SIGNAL(sesionAbierta());
+        sesion->open();
+        if (sesion->isOpen())
+            emit estado(QLatin1String("Conectado con el servidor."));
+    } else {
+        emit sesionAbierta();
+    }
+}
+
