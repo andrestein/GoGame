@@ -9,7 +9,13 @@ import static resource.Stone.StoneType.BLACK;
 import static resource.Stone.StoneType.WHITE;
 //import static net.sf.gogui.go.GoColor.BLACK_WHITE;
 //import static net.sf.gogui.go.GoColor.WHITE_BLACK;
+<<<<<<< Upstream, based on origin/master
 
+=======
+import gtp.gogame.GoPoint;
+import gtp.gogame.Komi;
+import gtp.gogame.Move;
+>>>>>>> 4cc5b32 Añadiendo timer
 import resource.Stone;
 //import net.sf.gogui.util.ObjectUtil;
 
