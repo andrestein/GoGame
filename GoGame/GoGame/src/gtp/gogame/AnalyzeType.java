@@ -1,6 +1,6 @@
 // AnalyzeType.java
 
-package net.sf.gogui.gtp;
+package gtp.gogame;
 
 /** Type of an analyze command.
     See GoGui documentation, chapter "Analyze Commands". */

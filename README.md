@@ -1,2 +1,0 @@
-# GoGame
-Juego de go

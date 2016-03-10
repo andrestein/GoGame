@@ -13,8 +13,7 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.net.URL;
 import java.util.ArrayList;
-import net.sf.gogui.util.ErrorMessage;
-import net.sf.gogui.util.StringUtil;
+import gtp.gogame.StringUtil;
 
 /** Definition of an analyze command.
     See GoGui documentation, chapter "Analyze Commands".
@@ -175,7 +174,7 @@ public class AnalyzeDefinition
     public static ArrayList<AnalyzeDefinition>
         read(ArrayList<String> supportedCommands, File analyzeCommands,
              String programAnalyzeCommands)
-        throws ErrorMessage
+        throws Error
     {
         if (analyzeCommands != null)
         {
@@ -187,7 +186,7 @@ public class AnalyzeDefinition
             }
             catch (FileNotFoundException e)
             {
-                throw new ErrorMessage("File \"" + analyzeCommands
+                throw new Error("File \"" + analyzeCommands
                                        + "\" not found");
             }
         }
@@ -215,7 +214,7 @@ public class AnalyzeDefinition
             }
             catch (IOException e)
             {
-                throw new ErrorMessage(e.getMessage());
+                throw new Error(e.getMessage());
             }
         }
     }
@@ -228,7 +227,7 @@ public class AnalyzeDefinition
 
     private static ArrayList<AnalyzeDefinition>
         readConfig(BufferedReader reader, String name,
-                   ArrayList<String> supportedCommands) throws ErrorMessage
+                   ArrayList<String> supportedCommands) throws Error
     {
         ArrayList<AnalyzeDefinition> result
             = new ArrayList<AnalyzeDefinition>();
@@ -245,7 +244,7 @@ public class AnalyzeDefinition
                 {
                     String array[] = line.split("/");
                     if (array.length < 3 || array.length > 5)
-                        throw new ErrorMessage("Error in " + name + " line "
+                        throw new Error("Error in " + name + " line "
                                                + lineNumber);
                     if (supportedCommands != null)
                     {
@@ -266,7 +265,7 @@ public class AnalyzeDefinition
         }
         catch (IOException e)
         {
-            throw new ErrorMessage("Error reading " + name);
+            throw new Error("Error reading " + name);
         }
         finally
         {
@@ -276,7 +275,7 @@ public class AnalyzeDefinition
             }
             catch (IOException e)
             {
-                throw new ErrorMessage("Error reading " + name);
+                throw new Error("Error reading " + name);
             }
         }
     }

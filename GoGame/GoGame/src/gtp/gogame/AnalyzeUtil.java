@@ -1,6 +1,6 @@
 // AnalyzeUtil.java
 
-package net.sf.gogui.gtp;
+package gtp.gogame;
 
 import java.util.ArrayList;
 import java.util.Scanner;

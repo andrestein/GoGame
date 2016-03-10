@@ -115,7 +115,7 @@ public final class StringUtil
         boolean hasMessage = ! StringUtil.isEmpty(message);
         String className = e.getClass().getName();
         String result;
-        if (e instanceof ErrorMessage)
+        if (e instanceof Error)
             result = message;
         else if (hasMessage)
             result = className + ":\n" + message;

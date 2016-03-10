@@ -9,7 +9,8 @@ import static resource.Stone.StoneType.WHITE;
 //import net.sf.gogui.go.GoPoint;
 //import net.sf.gogui.go.InvalidPointException;
 //import net.sf.gogui.go.PointList;
-//import net.sf.gogui.util.StringUtil;
+import gtp.gogame.StringUtil;
+import resource.Stone;
 
 /** GTP command.
     Handles parsing the command line and storing the response to the command.
