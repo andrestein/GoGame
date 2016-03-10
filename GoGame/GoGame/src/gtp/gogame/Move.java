@@ -50,15 +50,14 @@ public final class Move
     /** Factory method for constructing a pass move.
         @param c The color of the move.
         @return Reference to this move */
-    public static Move getPass(GoColor c)
+    public static Move getPass(Stone.StoneType c)
     {
-        assert c.isBlackWhite();
         return get(c, null);
     }
 
     /** Get color of move.
         @return Color of move */
-    public GoColor getColor()
+    public Stone.StoneType getColor()
     {
         return m_color;
     }
@@ -90,7 +89,7 @@ public final class Move
 
     private final Stone.StoneType m_color;
 
-    private final Stone.StoneType m_point;
+    private final GoPoint m_point;
 
     private final String m_string;
 

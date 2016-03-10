@@ -69,7 +69,9 @@ public class Stone extends ImageIcon {
         {
             return WHITE;
         }
-    },
+    };
+    
+        public abstract String getUppercaseLetter();
     }
 
     /**
