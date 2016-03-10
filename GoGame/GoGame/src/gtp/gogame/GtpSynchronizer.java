@@ -4,18 +4,18 @@ package gtp.gogame;
 
 import java.util.ArrayList;
 import java.util.List;
-import net.sf.gogui.go.Board;
-import net.sf.gogui.go.ConstBoard;
-import net.sf.gogui.go.ConstPointList;
-import net.sf.gogui.go.GoColor;
+import resource.Board9x9;
+import gtp.gogame.ConstBoard;
+import gtp.gogame.ConstPointList;
+import gtp.gogame.GoColor;
 import static resource.Stone.StoneType.BLACK;
 import static resource.Stone.StoneType.WHITE;
 //import static net.sf.gogui.go.GoColor.BLACK_WHITE;
 //import static net.sf.gogui.go.GoColor.WHITE_BLACK;
-import net.sf.gogui.go.GoPoint;
+import gtp.gogame.GoPoint;
 import net.sf.gogui.go.Komi;
-import net.sf.gogui.go.Move;
-import net.sf.gogui.util.ObjectUtil;
+import gtp.gogame.Move;
+//import net.sf.gogui.util.ObjectUtil;
 
 /** Synchronizes a GTP engine with a Go board.
     Handles different capabilities of different engines.
@@ -55,7 +55,7 @@ public class GtpSynchronizer
         return m_isOutOfSync;
     }
 
-    public void init(ConstBoard board, Komi komi, TimeSettings timeSettings)
+    public void init(ConstBoard board)
         throws GtpError
     {
         initSupportedCommands();
@@ -65,7 +65,6 @@ public class GtpSynchronizer
         m_gtp.sendBoardsize(size);
         m_engineState = new Board(size);
         m_gtp.sendClearBoard(size);
-        sendGameInfo(komi, timeSettings);
         ConstBoard targetState = computeTargetState(board);
         setup(targetState);
         ArrayList<Move> moves = new ArrayList<Move>();
