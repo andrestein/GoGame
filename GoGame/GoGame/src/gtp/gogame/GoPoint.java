@@ -25,6 +25,10 @@ public final class GoPoint
         @see #getIndex */
     public static final int NUMBER_INDEXES = MAX_SIZE * MAX_SIZE;
 
+    static String toString(PointList m_pointListArg) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     /** Compare two points.
         The order of the points is: A1, B1, ..., A2, B2, ... */
     public int compareTo(GoPoint p)
@@ -180,11 +184,7 @@ public final class GoPoint
 
     /** Convert to a string.
         @return String representation of this point. */
-    public String toString()
-    {
-        return m_string;
-    }
-
+    
     /** Convert a point or null point (pass) to a string.
         @param point Point or null for pass moves
         @return point.toString() or "PASS" if point is null */
