@@ -33,10 +33,11 @@ public final class Move
         assert color.isBlackWhite();
         if (point == null)
         {
-            if (color == BLACK)
+            if (color == BLACK){
                 return s_passBlack;
-            else
+            }else{
                 return s_passWhite;
+            }
         }
         int x = point.getX();
         int y = point.getY();

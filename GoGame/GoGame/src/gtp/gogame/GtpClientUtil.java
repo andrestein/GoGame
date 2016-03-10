@@ -2,16 +2,16 @@
 
 package gtp.gogame;
 
+import static gtp.gogame.AnalyzeUtil.getParameterCommand;
+import static gtp.gogame.AnalyzeUtil.parseParameterLine;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.StringReader;
 import java.util.ArrayList;
-import net.sf.gogui.go.Move;
-import static net.sf.gogui.gtp.AnalyzeUtil.getParameterCommand;
-import static net.sf.gogui.gtp.AnalyzeUtil.parseParameterLine;
-import net.sf.gogui.util.ErrorMessage;
+import gtp.gogame.Move;
+
 
 /** Utility functions for using a GtpClient. */
 public final class GtpClientUtil
@@ -107,7 +107,7 @@ public final class GtpClientUtil
     public static void
         saveParameters(GtpClientBase gtp,
                        ArrayList<AnalyzeDefinition> analyzeCommands,
-                       File file) throws ErrorMessage
+                       File file) throws Error
     {
         PrintStream out = null;
         try
@@ -129,7 +129,7 @@ public final class GtpClientUtil
                         out.println(e.getMessage());
                         out.println();
                         if (gtp.isProgramDead())
-                            throw new ErrorMessage("The Go program has" +
+                            throw new Error("The Go program has" +
                                                    " terminated.");
                         continue;
                     }
@@ -153,7 +153,7 @@ public final class GtpClientUtil
         }
         catch (IOException e)
         {
-            throw new ErrorMessage(e.getMessage());
+            throw new Error(e.getMessage());
         }
         finally
         {
