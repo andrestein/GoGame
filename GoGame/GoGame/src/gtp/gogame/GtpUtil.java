@@ -12,33 +12,31 @@ import java.util.regex.Pattern;
 import resource.Stone;
 import static resource.Stone.StoneType.BLACK;
 import static resource.Stone.StoneType.WHITE;
-import net.sf.gogui.go.InvalidPointException;
-import net.sf.gogui.go.Move;
 
 /** Utility functions used in package gtp. */
 public final class GtpUtil
 {
-    /** Get GTP time settings command .
-        @param settings The time settings. If null, this function will return
-        a GTP command for "no time limit" ("time_settings 0 1 0" with zero
-        byoyomi stones), which could confuse some programs, so it should be
-        only sent if necessary (when changing from a state with time settings
-        to a state with no time settings). */
-    public static String getTimeSettingsCommand(TimeSettings settings)
-    {
-        if (settings == null)
-            return "time_settings 0 1 0";
-        long preByoyomi = settings.getPreByoyomi() / 1000;
-        long byoyomi = 0;
-        long byoyomiMoves = 0;
-        if (settings.getUseByoyomi())
-        {
-            byoyomi = settings.getByoyomi() / 1000;
-            byoyomiMoves = settings.getByoyomiMoves();
-        }
-        return "time_settings " + preByoyomi + " " + byoyomi + " "
-            + byoyomiMoves;
-    }
+//    /** Get GTP time settings command .
+//        @param settings The time settings. If null, this function will return
+//        a GTP command for "no time limit" ("time_settings 0 1 0" with zero
+//        byoyomi stones), which could confuse some programs, so it should be
+//        only sent if necessary (when changing from a state with time settings
+//        to a state with no time settings). */
+//    public static String getTimeSettingsCommand(TimeSettings settings)
+//    {
+//        if (settings == null)
+//            return "time_settings 0 1 0";
+//        long preByoyomi = settings.getPreByoyomi() / 1000;
+//        long byoyomi = 0;
+//        long byoyomiMoves = 0;
+//        if (settings.getUseByoyomi())
+//        {
+//            byoyomi = settings.getByoyomi() / 1000;
+//            byoyomiMoves = settings.getByoyomiMoves();
+//        }
+//        return "time_settings " + preByoyomi + " " + byoyomi + " "
+//            + byoyomiMoves;
+//    }
 
     /** Check if command line contains a command.
         @return false if command line contains only whitespaces or only a
@@ -85,23 +83,23 @@ public final class GtpUtil
                 || c.equals("white"));
     }
 
-    public static double[][] parseDoubleBoard(String response, int boardSize)
-        throws GtpResponseFormatError
-    {
-        try
-        {
-            double result[][] = new double[boardSize][boardSize];
-            String s[][] = parseStringBoard(response, boardSize);
-            for (int x = 0; x < boardSize; ++x)
-                for (int y = 0; y < boardSize; ++y)
-                    result[x][y] = Double.parseDouble(s[x][y]);
-            return result;
-        }
-        catch (NumberFormatException e)
-        {
-            throw new GtpResponseFormatError("Floating point number expected");
-        }
-    }
+//    public static double[][] parseDoubleBoard(String response, int boardSize)
+//        throws GtpResponseFormatError
+//    {
+//        try
+//        {
+//            double result[][] = new double[boardSize][boardSize];
+//            String s[][] = parseStringBoard(response, boardSize);
+//            for (int x = 0; x < boardSize; ++x)
+//                for (int y = 0; y < boardSize; ++y)
+//                    result[x][y] = Double.parseDouble(s[x][y]);
+//            return result;
+//        }
+//        catch (NumberFormatException e)
+//        {
+//            throw new GtpResponseFormatError("Floating point number expected");
+//        }
+//    }
 
     public static GoPoint parsePoint(String s, int boardSize)
         throws GtpResponseFormatError
@@ -223,72 +221,72 @@ public final class GtpUtil
 //    }
 
     /** Find all moves contained in string. */
-    public static Move[] parseVariation(String s, GoColor toMove,
-                                        int boardSize)
-    {
-        ArrayList<Move> list = new ArrayList<Move>(32);
-        String token[] = StringUtil.splitArguments(s);
-        boolean isColorSet = true;
-        for (int i = 0; i < token.length; ++i)
-        {
-            String t = token[i].toLowerCase(Locale.ENGLISH);
-            if (t.equals("b") || t.equals("black"))
-            {
-                toMove = BLACK;
-                isColorSet = true;
-            }
-            else if (t.equals("w") || t.equals("white"))
-            {
-                toMove = WHITE;
-                isColorSet = true;
-            }
-            else
-            {
-                GoPoint point;
-                try
-                {
-                    point = parsePoint(t, boardSize);
-                }
-                catch (GtpResponseFormatError e)
-                {
-                    continue;
-                }
-                if (! isColorSet)
-                    toMove = toMove.otherColor();
-                list.add(Move.get(toMove, point));
-                isColorSet = false;
-            }
-        }
-        Move result[] = new Move[list.size()];
-        for (int i = 0; i < result.length; ++i)
-            result[i] = (Move)list.get(i);
-        return result;
-    }
+//    public static Move[] parseVariation(String s, Stone.StoneType toMove,
+//                                        int boardSize)
+//    {
+//        ArrayList<Move> list = new ArrayList<Move>(32);
+//        String token[] = StringUtil.splitArguments(s);
+//        boolean isColorSet = true;
+//        for (int i = 0; i < token.length; ++i)
+//        {
+//            String t = token[i].toLowerCase(Locale.ENGLISH);
+//            if (t.equals("b") || t.equals("black"))
+//            {
+//                toMove = BLACK;
+//                isColorSet = true;
+//            }
+//            else if (t.equals("w") || t.equals("white"))
+//            {
+//                toMove = WHITE;
+//                isColorSet = true;
+//            }
+//            else
+//            {
+//                GoPoint point;
+//                try
+//                {
+//                    point = parsePoint(t, boardSize);
+//                }
+//                catch (GtpResponseFormatError e)
+//                {
+//                    continue;
+//                }
+//                if (! isColorSet)
+//                    toMove = toMove.otherColor();
+//                list.add(Move.get(toMove, point));
+//                isColorSet = false;
+//            }
+//        }
+//        Move result[] = new Move[list.size()];
+//        for (int i = 0; i < result.length; ++i)
+//            result[i] = (Move)list.get(i);
+//        return result;
+//    }
 
-    /** Inform a GTP engine about the clock state.
-        Sends the clock state to the engine, if the clock is initialized and
-        the engine supports the time_left standard GTP command. Otherwise,
-        does nothing. */
-    public static void sendTimeLeft(GtpClientBase gtp, ConstClock clock,
-                                    GoColor c)
-    {
-        if (! clock.isInitialized() || ! gtp.isSupported("time_left"))
-            return;
-        String color = (c == BLACK ? "b" : "w");
-        long timeLeft = clock.getTimeLeft(c) / 1000;
-        long movesLeft = 0;
-        if (clock.getTimeSettings().getUseByoyomi()
-            && clock.isInByoyomi(c))
-            movesLeft = clock.getMovesLeft(c);
-        try
-        {
-            gtp.send("time_left " + color + " " + timeLeft + " "
-                     + movesLeft);
-        }
-        catch (GtpError e)
-        {
-        }
-    }
+//    /** Inform a GTP engine about the clock state.
+//        Sends the clock state to the engine, if the clock is initialized and
+//        the engine supports the time_left standard GTP command. Otherwise,
+//        does nothing. */
+//    public static void sendTimeLeft(GtpClientBase gtp, ConstClock clock,
+//                                    Stone.StoneType c)
+//    {
+//        if (! clock.isInitialized() || ! gtp.isSupported("time_left"))
+//            return;
+//        String color = (c == BLACK ? "b" : "w");
+//        long timeLeft = clock.getTimeLeft(c) / 1000;
+//        long movesLeft = 0;
+//        if (clock.getTimeSettings().getUseByoyomi()
+//            && clock.isInByoyomi(c))
+//            movesLeft = clock.getMovesLeft(c);
+//        try
+//        {
+//            gtp.send("time_left " + color + " " + timeLeft + " "
+//                     + movesLeft);
+//        }
+//        catch (GtpError e)
+//        {
+//        }
+//    }
 
     /** Make constructor unavailable; class is for namespace only. */
     private GtpUtil()

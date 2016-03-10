@@ -8,7 +8,6 @@ import java.util.Locale;
 import static resource.Stone.StoneType.BLACK;
 import static resource.Stone.StoneType.WHITE;
 
-import net.sf.gogui.go.Move;
 
 /** Interface to a Go program that uses GTP.
     This class implements most of the functionality of a connection to a GTP
@@ -215,7 +214,7 @@ public abstract class GtpClientBase
         Assumes version 2 if the protocol_version command is not available,
         fails, or returns a version greater 2.
         @see GtpClientBase#getProtocolVersion */
-    public void queryProtocolVersion()
+    public void queryProtocolVersion() throws GtpError
     {
         m_protocolVersion = 2;
         try
@@ -227,6 +226,9 @@ public abstract class GtpClientBase
         }
         catch (NumberFormatException e)
         {
+        }
+        catch (GtpError e) 
+        {    
         }
  
     }

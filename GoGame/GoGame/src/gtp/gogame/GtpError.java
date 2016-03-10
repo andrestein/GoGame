@@ -1,4 +1,4 @@
-
+package gtp.gogame;
 
 /** Exception indicating the failure of a GTP command. */
 public class GtpError
