@@ -4,7 +4,6 @@ package gtp.gogame;
 
 import java.util.ArrayList;
 import java.util.List;
-import net.sf.gogui.game.TimeSettings;
 import net.sf.gogui.go.Board;
 import net.sf.gogui.go.ConstBoard;
 import net.sf.gogui.go.ConstPointList;

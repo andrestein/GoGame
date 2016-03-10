@@ -12,8 +12,8 @@ import java.util.regex.Pattern;
 import resource.Stone;
 import static resource.Stone.StoneType.BLACK;
 import static resource.Stone.StoneType.WHITE;
-import net.sf.gogui.go.InvalidPointException;
-import net.sf.gogui.go.Move;
+import gtp.gogame.InvalidPointException;
+import gtp.gogame.Move;
 
 /** Utility functions used in package gtp. */
 public final class GtpUtil

@@ -8,7 +8,7 @@ import java.util.Locale;
 import static resource.Stone.StoneType.BLACK;
 import static resource.Stone.StoneType.WHITE;
 
-import net.sf.gogui.go.Move;
+import gtp.gogame.Move;
 
 /** Interface to a Go program that uses GTP.
     This class implements most of the functionality of a connection to a GTP
