@@ -1,6 +1,6 @@
 // GtpSynchronizer.java
 
-package net.sf.gogui.gtp;
+package gtp.gogame;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,10 +9,10 @@ import net.sf.gogui.go.Board;
 import net.sf.gogui.go.ConstBoard;
 import net.sf.gogui.go.ConstPointList;
 import net.sf.gogui.go.GoColor;
-import static net.sf.gogui.go.GoColor.BLACK;
-import static net.sf.gogui.go.GoColor.WHITE;
-import static net.sf.gogui.go.GoColor.BLACK_WHITE;
-import static net.sf.gogui.go.GoColor.WHITE_BLACK;
+import static resource.Stone.StoneType.BLACK;
+import static resource.Stone.StoneType.WHITE;
+//import static net.sf.gogui.go.GoColor.BLACK_WHITE;
+//import static net.sf.gogui.go.GoColor.WHITE_BLACK;
 import net.sf.gogui.go.GoPoint;
 import net.sf.gogui.go.Komi;
 import net.sf.gogui.go.Move;

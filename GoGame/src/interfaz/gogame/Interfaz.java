@@ -22,7 +22,7 @@ import mundo.gogame.Tablero;
 public final class Interfaz extends JFrame implements ActionListener {
 
     private TableroUI tabUI;
-    private Partida partida;
+    private final Partida partida;
     private Puntaje p1;
     private Puntaje p2;
     private JToolBar toolbar;
@@ -85,7 +85,7 @@ public final class Interfaz extends JFrame implements ActionListener {
             p1.clear();
             p2.clear();
             partida.setTurno(1);
-        }else if(e.getSource() == btnCambioTurno){
+        } else if(e.getSource() == btnCambioTurno) {
             partida.addTurno();
         }
     }

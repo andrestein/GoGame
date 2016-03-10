@@ -25,7 +25,51 @@ public class Stone extends ImageIcon {
     private ImageIcon img;
 
     public enum StoneType {
-        StoneWhite, StoneBlack
+    WHITE  
+    {
+        public String getCapitalizedName()
+        {
+            return "White";
+        }
+
+        public String getUppercaseLetter()
+        {
+            return "W";
+        }
+
+        public boolean isBlackWhite()
+        {
+            return true;
+        }
+
+        public StoneType otherColor()
+        {
+            return WHITE;
+        }
+    }
+    ,
+    BLACK
+    {
+        public String getCapitalizedName()
+        {
+            return "Black";
+        }
+
+        public String getUppercaseLetter()
+        {
+            return "B";
+        }
+
+        public boolean isBlackWhite()
+        {
+            return true;
+        }
+
+        public StoneType otherColor()
+        {
+            return WHITE;
+        }
+    },
     }
 
     /**
@@ -59,13 +103,13 @@ public class Stone extends ImageIcon {
 
     private void loadImage() throws MalformedURLException {
         switch (type) {
-            case StoneWhite: {
+            case WHITE: {
                 URL url = new URL("file", "localhost", "src/resource/g-white.png");
                 img = new ImageIcon(url.getFile());
                 setImage(img.getImage());
             }
             break;
-            case StoneBlack: {
+            case BLACK: {
                 URL url = new URL("file", "localhost", "src/resource/g-black.png");
                 img = new ImageIcon(url.getFile());
                 setImage(img.getImage());

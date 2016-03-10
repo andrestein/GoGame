@@ -1,6 +1,6 @@
 // GtpClient.java
 
-package net.sf.gogui.gtp;
+package gtp.gogame;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -13,9 +13,6 @@ import java.io.Reader;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
-import net.sf.gogui.go.Move;
-import net.sf.gogui.util.StringUtil;
-import net.sf.gogui.util.ProcessUtil;
 
 /** Interface to a Go program that uses GTP over the standard I/O streams.
     <p>

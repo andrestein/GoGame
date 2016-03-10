@@ -1,6 +1,6 @@
 // GtpClientBase.java
 
-package net.sf.gogui.gtp;
+package gtp.gogame;
 
 import java.io.IOException;
 import java.util.ArrayList;

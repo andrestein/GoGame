@@ -1,6 +1,6 @@
 // GtpCallback.java
 
-package net.sf.gogui.gtp;
+package gtp.gogame;
 
 /** Callback function for a command.
     It should throw a GtpError for creating a failure response,

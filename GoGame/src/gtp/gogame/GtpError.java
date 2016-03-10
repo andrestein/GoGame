@@ -1,12 +1,8 @@
-// GtpError.java
 
-package net.sf.gogui.gtp;
-
-import net.sf.gogui.util.ErrorMessage;
 
 /** Exception indicating the failure of a GTP command. */
 public class GtpError
-    extends ErrorMessage
+    extends Exception
 {
     public GtpError(String s)
     {

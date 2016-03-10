@@ -1,6 +1,6 @@
 // GtpEngine.java
 
-package net.sf.gogui.gtp;
+package gtp.gogame;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -11,9 +11,6 @@ import java.io.PrintStream;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
-import net.sf.gogui.go.GoPoint;
-import net.sf.gogui.go.InvalidPointException;
-import net.sf.gogui.go.PointList;
 import net.sf.gogui.util.StringUtil;
 
 /** Base class for Go programs and tools implementing GTP. */
@@ -177,31 +174,31 @@ public class GtpEngine
         }
     }
 
-    /** Utility function for parsing an point list argument.
-        @param cmdArray Command line split into words.
-        @param boardSize Board size is needed for parsing the points
-        @return Point list argument */
-    public static PointList parsePointListArgument(String[] cmdArray,
-                                                   int boardSize)
-        throws GtpError
-    {
-        try
-        {
-            int length = cmdArray.length;
-            assert length >= 1;
-            PointList pointList = new PointList();
-            for (int i = 1; i < length; ++i)
-            {
-                GoPoint p = GoPoint.parsePoint(cmdArray[i], boardSize);
-                pointList.add(p);
-            }
-            return pointList;
-        }
-        catch (InvalidPointException e)
-        {
-            throw new GtpError(e.getMessage());
-        }
-    }
+//    /** Utility function for parsing an point list argument.
+//        @param cmdArray Command line split into words.
+//        @param boardSize Board size is needed for parsing the points
+//        @return Point list argument */
+//    public static PointList parsePointListArgument(String[] cmdArray,
+//                                                   int boardSize)
+//        throws GtpError
+//    {
+//        try
+//        {
+//            int length = cmdArray.length;
+//            assert length >= 1;
+//            PointList pointList = new PointList();
+//            for (int i = 1; i < length; ++i)
+//            {
+//                GoPoint p = GoPoint.parsePoint(cmdArray[i], boardSize);
+//                pointList.add(p);
+//            }
+//            return pointList;
+//        }
+//        catch (InvalidPointException e)
+//        {
+//            throw new GtpError(e.getMessage());
+//        }
+//    }
 
     /** Print invalid response directly to output stream.
         Should only be used for simulationg broken GTP implementations

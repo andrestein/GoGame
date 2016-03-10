@@ -1,6 +1,6 @@
 // GtpUtil.java
 
-package net.sf.gogui.gtp;
+package gtp.gogame;
 
 import java.io.BufferedReader;
 import java.io.IOException;

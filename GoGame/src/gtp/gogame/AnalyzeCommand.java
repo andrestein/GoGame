@@ -1,12 +1,12 @@
 // AnalyzeCommand.java
 
-package net.sf.gogui.gtp;
+package gtp.gogame;
 
 import java.io.File;
 import net.sf.gogui.go.ConstPointList;
 import net.sf.gogui.go.GoColor;
-import static net.sf.gogui.go.GoColor.BLACK;
-import static net.sf.gogui.go.GoColor.WHITE;
+import static resource.Stone.StoneType.BLACK;
+import static resource.Stone.StoneType.WHITE;
 import net.sf.gogui.go.GoPoint;
 import net.sf.gogui.go.PointList;
 

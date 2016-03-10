@@ -79,8 +79,8 @@ public class TableroUI extends JComponent implements Observable, MouseMotionList
             blancas = new ArrayList<>((size * size) / 2);
             negras = new ArrayList<>((size * size) / 2);
             actual = new Stone[2];
-            actual[1] = new Stone(Stone.StoneType.StoneBlack, boardInfo.getRect(5, 'E'));
-            actual[0] = new Stone(Stone.StoneType.StoneWhite, boardInfo.getRect(5, 'E'));
+            actual[1] = new Stone(Stone.StoneType.BLACK, boardInfo.getRect(5, 'E'));
+            actual[0] = new Stone(Stone.StoneType.WHITE, boardInfo.getRect(5, 'E'));
         } catch (BoardLimitsException ex) {
             Logger.getLogger(TableroUI.class.getName()).log(Level.SEVERE, null, ex);
         }

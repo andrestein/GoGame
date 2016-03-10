@@ -1,14 +1,14 @@
 // GtpCommand.java
 
-package net.sf.gogui.gtp;
+package gtp.gogame;
 
 import java.util.Locale;
-import net.sf.gogui.go.GoColor;
-import static net.sf.gogui.go.GoColor.BLACK;
-import static net.sf.gogui.go.GoColor.WHITE;
-import net.sf.gogui.go.GoPoint;
-import net.sf.gogui.go.InvalidPointException;
-import net.sf.gogui.go.PointList;
+import resource.Stone.StoneType;
+import static resource.Stone.StoneType.BLACK;
+import static resource.Stone.StoneType.WHITE;
+//import net.sf.gogui.go.GoPoint;
+//import net.sf.gogui.go.InvalidPointException;
+//import net.sf.gogui.go.PointList;
 import net.sf.gogui.util.StringUtil;
 
 /** GTP command.
@@ -124,7 +124,7 @@ public class GtpCommand
         @return The color.
         @throws GtpError If command has not exactly one argument or argument
         is not a color. */
-    public GoColor getColorArg() throws GtpError
+    public Stone.StoneType getColorArg() throws GtpError
     {
         checkNuArg(1);
         return getColorArg(0);
