@@ -5,16 +5,12 @@ package gtp.gogame;
 import java.util.ArrayList;
 import java.util.List;
 import resource.Board9x9;
-import gtp.gogame.ConstBoard;
-import gtp.gogame.ConstPointList;
-import gtp.gogame.GoColor;
 import static resource.Stone.StoneType.BLACK;
 import static resource.Stone.StoneType.WHITE;
 //import static net.sf.gogui.go.GoColor.BLACK_WHITE;
 //import static net.sf.gogui.go.GoColor.WHITE_BLACK;
-import gtp.gogame.GoPoint;
-import net.sf.gogui.go.Komi;
-import gtp.gogame.Move;
+
+import resource.Stone;
 //import net.sf.gogui.util.ObjectUtil;
 
 /** Synchronizes a GTP engine with a Go board.
@@ -124,7 +120,7 @@ public class GtpSynchronizer
         if (m_fillPasses && m_engineState.getNumberMoves() > 0)
         {
             Move lastMove = m_engineState.getLastMove();
-            GoColor c = move.getColor();
+            Stone.StoneType c = move.getColor();
             if (lastMove.getColor() == c)
                 play(Move.getPass(c.otherColor()));
         }
@@ -228,7 +224,7 @@ public class GtpSynchronizer
         for (int i = 0; i < board.getNumberMoves(); ++i)
         {
             Move move = board.getMove(i);
-            GoColor toMove = targetState.getToMove();
+            Stone.StoneType toMove = targetState.getToMove();
             if (m_fillPasses && move.getColor() != toMove)
                 targetState.play(Move.getPass(toMove));
             targetState.play(move);
@@ -263,18 +259,18 @@ public class GtpSynchronizer
         return i;
     }
 
-    private boolean isSetupDifferent(ConstBoard targetState)
-    {
-        if (m_engineState.isSetupHandicap() != targetState.isSetupHandicap())
-            return true;
-        if (! ObjectUtil.equals(m_engineState.getSetupPlayer(),
-                                targetState.getSetupPlayer()))
-            return true;
-        for (GoColor c : BLACK_WHITE)
-            if (! m_engineState.getSetup(c).equals(targetState.getSetup(c)))
-                return true;
-        return false;
-    }
+//    private boolean isSetupDifferent(ConstBoard targetState)
+//    {
+//        if (m_engineState.isSetupHandicap() != targetState.isSetupHandicap())
+//            return true;
+//        if (! ObjectUtil.equals(m_engineState.getSetupPlayer(),
+//                                targetState.getSetupPlayer()))
+//            return true;
+//        for (GoColor c : BLACK_WHITE)
+//            if (! m_engineState.getSetup(c).equals(targetState.getSetup(c)))
+//                return true;
+//        return false;
+//    }
 
     private void initSupportedCommands()
     {

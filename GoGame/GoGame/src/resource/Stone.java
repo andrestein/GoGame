@@ -5,6 +5,7 @@
  */
 package resource;
 
+import gtp.gogame.GoColor;
 import java.awt.Graphics;
 import java.awt.image.ImageObserver;
 import java.net.MalformedURLException;
@@ -72,6 +73,8 @@ public class Stone extends ImageIcon {
     };
     
         public abstract String getUppercaseLetter();
+        
+        public abstract StoneType otherColor();
     }
 
     /**
