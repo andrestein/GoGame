@@ -5,12 +5,10 @@ package gtp.gogame;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Locale;
-import gtp.gogame.GoColor;
 import static resource.Stone.StoneType.BLACK;
 import static resource.Stone.StoneType.WHITE;
-import gtp.gogame.GoPoint;
+
 import net.sf.gogui.go.Move;
-import gtp.gogame.StringUtil;
 
 /** Interface to a Go program that uses GTP.
     This class implements most of the functionality of a connection to a GTP
@@ -230,9 +228,7 @@ public abstract class GtpClientBase
         catch (NumberFormatException e)
         {
         }
-        catch (GtpError e)
-        {
-        }
+ 
     }
 
     /** Query the supported commands.

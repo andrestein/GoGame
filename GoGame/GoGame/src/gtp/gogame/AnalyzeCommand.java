@@ -3,12 +3,8 @@
 package gtp.gogame;
 
 import java.io.File;
-import net.sf.gogui.go.ConstPointList;
-import net.sf.gogui.go.GoColor;
 import static resource.Stone.StoneType.BLACK;
 import static resource.Stone.StoneType.WHITE;
-import net.sf.gogui.go.GoPoint;
-import net.sf.gogui.go.PointList;
 
 /** Concrete analyze command including data for wildcard replacements.
     See GoGui documentation, chapter "Analyze Commands" */
@@ -230,10 +226,10 @@ public class AnalyzeCommand
         m_pointArg = point;
     }
 
-    public void setPointListArg(ConstPointList pointList)
-    {
-        m_pointListArg = new PointList(pointList);
-    }
+//    public void setPointListArg(ConstPointList pointList)
+//    {
+//        m_pointListArg = new PointList(pointList);
+//    }
 
     public void setStringArg(String value)
     {
