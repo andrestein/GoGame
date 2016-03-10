@@ -9,7 +9,7 @@ import static resource.Stone.StoneType.WHITE;
 //import net.sf.gogui.go.GoPoint;
 //import net.sf.gogui.go.InvalidPointException;
 //import net.sf.gogui.go.PointList;
-import net.sf.gogui.util.StringUtil;
+//import net.sf.gogui.util.StringUtil;
 
 /** GTP command.
     Handles parsing the command line and storing the response to the command.
@@ -124,7 +124,7 @@ public class GtpCommand
         @return The color.
         @throws GtpError If command has not exactly one argument or argument
         is not a color. */
-    public Stone.StoneType getColorArg() throws GtpError
+    public StoneType getColorArg() throws GtpError
     {
         checkNuArg(1);
         return getColorArg(0);
@@ -137,7 +137,7 @@ public class GtpCommand
         @return The color.
         @throws GtpError If command has not enough arguments or argument is
         not a color. */
-    public GoColor getColorArg(int i) throws GtpError
+    public StoneType getColorArg(int i) throws GtpError
     {
         String arg = getArg(i).toLowerCase(Locale.ENGLISH);
         if (arg.equals("b") || arg.equals("black"))
@@ -251,21 +251,21 @@ public class GtpCommand
         }
     }
 
-    /** Get point arguments.
-        Valid point strings are as in GtpUtil.parsePoint (uppercase or
-        lowercase coordinates, e.g. "A1", or "pass").
-        All arguments will be parsed as points.
-        @param boardSize The board size (points will be checked to be within
-        this board size).
-        @return Point list containg the points.
-        @throws GtpError If at least one argument is not a valid point. */
-    public PointList getPointListArg(int boardSize) throws GtpError
-    {
-        PointList pointList = new PointList();
-        for (int i = 0; i < getNuArg(); ++i)
-            pointList.add(getPointArg(i, boardSize));
-        return pointList;
-    }
+//    /** Get point arguments.
+//        Valid point strings are as in GtpUtil.parsePoint (uppercase or
+//        lowercase coordinates, e.g. "A1", or "pass").
+//        All arguments will be parsed as points.
+//        @param boardSize The board size (points will be checked to be within
+//        this board size).
+//        @return Point list containg the points.
+//        @throws GtpError If at least one argument is not a valid point. */
+//    public PointList getPointListArg(int boardSize) throws GtpError
+//    {
+//        PointList pointList = new PointList();
+//        for (int i = 0; i < getNuArg(); ++i)
+//            pointList.add(getPointArg(i, boardSize));
+//        return pointList;
+//    }
 
     /** Full command line without ID.
         @return The command line without ID. */

@@ -6,9 +6,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Locale;
 import net.sf.gogui.go.GoColor;
-import static net.sf.gogui.go.GoColor.BLACK;
-import static net.sf.gogui.go.GoColor.WHITE;
-import net.sf.gogui.go.GoPoint;
+import static resource.Stone.StoneType.BLACK;
+import static resource.Stone.StoneType.WHITE;
 import net.sf.gogui.go.Move;
 import net.sf.gogui.util.StringUtil;
 
@@ -59,43 +58,12 @@ public abstract class GtpClientBase
             return "clear_board";
     }
 
-    /** Get command for generating a move.
-        Note: call queryProtocolVersion first
-        @param color GoColor::BLACK or GoColor::WHITE
-        @return The right command depending on the GTP version. */
-    public String getCommandGenmove(GoColor color)
-    {
-        assert color.isBlackWhite();
-        if (m_protocolVersion == 1)
-        {
-            if (color == BLACK)
-                return "genmove_black";
-            else
-                return "genmove_white";
-        }
-        if (color == BLACK)
-            return "genmove b";
-        else
-            return "genmove w";
-    }
-
     /** Get command for playing a move.
         Note: call queryProtocolVersion first
         @return The right command depending on the GTP version. */
     public String getCommandPlay(Move move)
     {
         m_buffer.setLength(0);
-        if (m_protocolVersion == 1)
-        {
-            GoColor color = move.getColor();
-            String point = GoPoint.toString(move.getPoint());
-            if (color == BLACK)
-               m_buffer.append("black ");
-            else if (color == WHITE)
-                m_buffer.append("white ");
-            m_buffer.append(point);
-        }
-        else
         {
             m_buffer.append("play ");
             m_buffer.append(move);

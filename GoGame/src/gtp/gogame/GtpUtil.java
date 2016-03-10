@@ -9,16 +9,12 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import net.sf.gogui.game.ConstClock;
-import net.sf.gogui.game.TimeSettings;
-import net.sf.gogui.go.GoColor;
-import static net.sf.gogui.go.GoColor.BLACK;
-import static net.sf.gogui.go.GoColor.WHITE;
+import resource.Stone;
+import static resource.Stone.StoneType.BLACK;
+import static resource.Stone.StoneType.WHITE;
 import net.sf.gogui.go.GoPoint;
 import net.sf.gogui.go.InvalidPointException;
 import net.sf.gogui.go.Move;
-import net.sf.gogui.go.PointList;
-import net.sf.gogui.util.StringUtil;
 
 /** Utility functions used in package gtp. */
 public final class GtpUtil
@@ -122,110 +118,110 @@ public final class GtpUtil
         }
     }
 
-    public static PointList parsePointList(String s, int boardSize)
-        throws GtpResponseFormatError
-    {
-        try
-        {
-            return GoPoint.parsePointList(s, boardSize);
-        }
-        catch (InvalidPointException e)
-        {
-            throw new GtpResponseFormatError(e.getMessage());
-        }
-    }
+//    public static PointList parsePointList(String s, int boardSize)
+//        throws GtpResponseFormatError
+//    {
+//        try
+//        {
+//            return GoPoint.parsePointList(s, boardSize);
+//        }
+//        catch (InvalidPointException e)
+//        {
+//            throw new GtpResponseFormatError(e.getMessage());
+//        }
+//    }
+
+//    /** Find all points contained in string. */
+//    public static PointList parsePointString(String text)
+//    {
+//        return parsePointString(text, GoPoint.MAX_SIZE);
+//    }
 
     /** Find all points contained in string. */
-    public static PointList parsePointString(String text)
-    {
-        return parsePointString(text, GoPoint.MAX_SIZE);
-    }
+//    public static PointList parsePointString(String text, int boardSize)
+//    {
+//        String regex = "\\b([Pp][Aa][Ss][Ss]|[A-Ta-t](1\\d|[1-9]))\\b";
+//        Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
+//        Matcher matcher = pattern.matcher(text);
+//        PointList list = new PointList(32);
+//        while (matcher.find())
+//        {
+//            int start = matcher.start();
+//            int end = matcher.end();
+//            GoPoint point;
+//            try
+//            {
+//                point = parsePoint(text.substring(start, end), boardSize);
+//            }
+//            catch (GtpResponseFormatError e)
+//            {
+//                assert false;
+//                continue;
+//            }
+//            list.add(point);
+//        }
+//        return list;
+//    }
 
-    /** Find all points contained in string. */
-    public static PointList parsePointString(String text, int boardSize)
-    {
-        String regex = "\\b([Pp][Aa][Ss][Ss]|[A-Ta-t](1\\d|[1-9]))\\b";
-        Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
-        Matcher matcher = pattern.matcher(text);
-        PointList list = new PointList(32);
-        while (matcher.find())
-        {
-            int start = matcher.start();
-            int end = matcher.end();
-            GoPoint point;
-            try
-            {
-                point = parsePoint(text.substring(start, end), boardSize);
-            }
-            catch (GtpResponseFormatError e)
-            {
-                assert false;
-                continue;
-            }
-            list.add(point);
-        }
-        return list;
-    }
-
-    public static void parsePointStringList(String s, PointList pointList,
-                                            ArrayList<String> stringList,
-                                            int boardsize)
-        throws GtpResponseFormatError
-    {
-        pointList.clear();
-        stringList.clear();
-        String array[] = StringUtil.splitArguments(s);
-        boolean nextIsPoint = true;
-        GoPoint point = null;
-        for (int i = 0; i < array.length; ++i)
-            if (! array[i].equals(""))
-            {
-                if (nextIsPoint)
-                {
-                    point = parsePoint(array[i], boardsize);
-                    nextIsPoint = false;
-                }
-                else
-                {
-                    nextIsPoint = true;
-                    pointList.add(point);
-                    stringList.add(array[i]);
-                }
-            }
-        if (! nextIsPoint)
-            throw new GtpResponseFormatError("Missing string");
-    }
-
-    public static String[][] parseStringBoard(String s, int boardSize)
-        throws GtpResponseFormatError
-    {
-        String result[][] = new String[boardSize][boardSize];
-        try
-        {
-            BufferedReader reader = new BufferedReader(new StringReader(s));
-            for (int y = boardSize - 1; y >= 0; --y)
-            {
-                String line = reader.readLine();
-                if (line == null)
-                    throw new GtpResponseFormatError("Incomplete string board");
-                if (line.trim().equals(""))
-                {
-                    ++y;
-                    continue;
-                }
-                String[] args = StringUtil.splitArguments(line);
-                if (args.length < boardSize)
-                    throw new GtpResponseFormatError("Incomplete string board");
-                for (int x = 0; x < boardSize; ++x)
-                    result[x][y] = args[x];
-            }
-        }
-        catch (IOException e)
-        {
-            throw new GtpResponseFormatError("I/O error");
-        }
-        return result;
-    }
+//    public static void parsePointStringList(String s, PointList pointList,
+//                                            ArrayList<String> stringList,
+//                                            int boardsize)
+//        throws GtpResponseFormatError
+//    {
+//        pointList.clear();
+//        stringList.clear();
+//        String array[] = StringUtil.splitArguments(s);
+//        boolean nextIsPoint = true;
+//        GoPoint point = null;
+//        for (int i = 0; i < array.length; ++i)
+//            if (! array[i].equals(""))
+//            {
+//                if (nextIsPoint)
+//                {
+//                    point = parsePoint(array[i], boardsize);
+//                    nextIsPoint = false;
+//                }
+//                else
+//                {
+//                    nextIsPoint = true;
+//                    pointList.add(point);
+//                    stringList.add(array[i]);
+//                }
+//            }
+//        if (! nextIsPoint)
+//            throw new GtpResponseFormatError("Missing string");
+//    }
+//
+//    public static String[][] parseStringBoard(String s, int boardSize)
+//        throws GtpResponseFormatError
+//    {
+//        String result[][] = new String[boardSize][boardSize];
+//        try
+//        {
+//            BufferedReader reader = new BufferedReader(new StringReader(s));
+//            for (int y = boardSize - 1; y >= 0; --y)
+//            {
+//                String line = reader.readLine();
+//                if (line == null)
+//                    throw new GtpResponseFormatError("Incomplete string board");
+//                if (line.trim().equals(""))
+//                {
+//                    ++y;
+//                    continue;
+//                }
+//                String[] args = StringUtil.splitArguments(line);
+//                if (args.length < boardSize)
+//                    throw new GtpResponseFormatError("Incomplete string board");
+//                for (int x = 0; x < boardSize; ++x)
+//                    result[x][y] = args[x];
+//            }
+//        }
+//        catch (IOException e)
+//        {
+//            throw new GtpResponseFormatError("I/O error");
+//        }
+//        return result;
+//    }
 
     /** Find all moves contained in string. */
     public static Move[] parseVariation(String s, GoColor toMove,

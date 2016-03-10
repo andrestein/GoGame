@@ -1,9 +1,8 @@
 // GoPoint.java
 
-package net.sf.gogui.go;
+package gtp.gogame;
 
 import java.util.Locale;
-import net.sf.gogui.util.StringUtil;
 
 /** Intersection on the Go board.
     This class is immutable and references to the same point are unique.
@@ -157,15 +156,15 @@ public final class GoPoint
         return GoPoint.get(x, y);
     }
 
-    public static PointList parsePointList(String s, int boardSize)
-        throws InvalidPointException
-    {
-        PointList list = new PointList();
-        for (String p : StringUtil.splitArguments(s))
-            if (! p.equals(""))
-                list.add(parsePoint(p, boardSize));
-        return list;
-    }
+//    public static PointList parsePointList(String s, int boardSize)
+//        throws InvalidPointException
+//    {
+//        PointList list = new PointList();
+//        for (String p : StringUtil.splitArguments(s))
+//            if (! p.equals(""))
+//                list.add(parsePoint(p, boardSize));
+//        return list;
+//    }
 
     /** Return point right.
         @param max Current board size.
@@ -196,23 +195,23 @@ public final class GoPoint
         return point.toString();
     }
 
-    /** Convert a list of points to a string.
-        Points are separated by a single space.
-        If pointList is null, "(null)" is returned. */
-    public static String toString(ConstPointList pointList)
-    {
-        if (pointList == null)
-            return "(null)";
-        int length = pointList.size();
-        StringBuilder buffer = new StringBuilder(length * 4);
-        for (int i = 0; i < length; ++i)
-        {
-            buffer.append(pointList.get(i));
-            if (i < length - 1)
-                buffer.append(' ');
-        }
-        return buffer.toString();
-    }
+//    /** Convert a list of points to a string.
+//        Points are separated by a single space.
+//        If pointList is null, "(null)" is returned. */
+//    public static String toString(ConstPointList pointList)
+//    {
+//        if (pointList == null)
+//            return "(null)";
+//        int length = pointList.size();
+//        StringBuilder buffer = new StringBuilder(length * 4);
+//        for (int i = 0; i < length; ++i)
+//        {
+//            buffer.append(pointList.get(i));
+//            if (i < length - 1)
+//                buffer.append(' ');
+//        }
+//        return buffer.toString();
+//    }
 
     /** Return point above.
         @param max Current board size.

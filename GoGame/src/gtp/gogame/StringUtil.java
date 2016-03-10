@@ -1,6 +1,6 @@
 // StringUtil.java
 
-package net.sf.gogui.util;
+package gtp.gogame;
 
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStreamWriter;

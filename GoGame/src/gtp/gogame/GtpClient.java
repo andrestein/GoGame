@@ -92,13 +92,10 @@ public final class GtpClient
         @param log Log input, output and error stream to standard error.
         @param callback Callback for external display of the streams. */
     public GtpClient(String program, File workingDirectory, boolean log,
-                     IOCallback callback)
-        throws GtpClient.ExecFailed
+                     IOCallback callback) throws Exception
     {
         if (workingDirectory != null && ! workingDirectory.isDirectory())
-            throw new ExecFailed(program,
-                                 "Invalid working directory \""
-                                 + workingDirectory + "\"");
+            throw new Exception("Failed open Directory");
         m_log = log;
         m_callback = callback;
         m_wasKilled = false;
@@ -112,8 +109,7 @@ public final class GtpClient
         }
         m_program = program;
         if (StringUtil.isEmpty(program))
-            throw new ExecFailed(program,
-                                 "Command for invoking Go program must be"
+            throw new Exception("Command for invoking Go program must be"
                                  + " not empty.");
         Runtime runtime = Runtime.getRuntime();
         try
@@ -140,7 +136,7 @@ public final class GtpClient
         }
         catch (IOException e)
         {
-            throw new ExecFailed(program, e);
+            throw new Exception(program, e);
         }
         init(m_process.getInputStream(), m_process.getOutputStream(),
              m_process.getErrorStream());

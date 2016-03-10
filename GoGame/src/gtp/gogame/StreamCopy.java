@@ -1,6 +1,6 @@
 // StreamCopy.java
 
-package net.sf.gogui.util;
+package gtp.gogame;
 
 import java.io.InputStream;
 import java.io.IOException;
