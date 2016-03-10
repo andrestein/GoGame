@@ -33,10 +33,11 @@ public final class Move
     {
         if (point == null)
         {
-            if (color == BLACK)
+            if (color == BLACK){
                 return s_passBlack;
-            else
+            }else{
                 return s_passWhite;
+            }
         }
         int x = point.getX();
         int y = point.getY();
