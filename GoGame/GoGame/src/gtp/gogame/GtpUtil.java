@@ -12,7 +12,6 @@ import java.util.regex.Pattern;
 import resource.Stone;
 import static resource.Stone.StoneType.BLACK;
 import static resource.Stone.StoneType.WHITE;
-import net.sf.gogui.go.GoPoint;
 import net.sf.gogui.go.InvalidPointException;
 import net.sf.gogui.go.Move;
 

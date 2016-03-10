@@ -2,6 +2,7 @@
 
 package gtp.gogame;
 
+import resource.Stone;
 import static resource.Stone.StoneType.BLACK;
 import static resource.Stone.StoneType.WHITE;
 
@@ -17,7 +18,7 @@ public final class Move
         @param x Column in <code>[0..GoPoint.MAX_SIZE - 1]</code>
         @param y Row in <code>[0..GoPoint.MAX_SIZE - 1]</code>
         @return Reference to this move */
-    public static Move get(GoColor color, int x, int y)
+    public static Move get(Stone.StoneType color, int x, int y)
     {
         return get(color, GoPoint.get(x, y));
     }
@@ -28,9 +29,8 @@ public final class Move
         future)
         @param point Location of the move (null for pass move)
         @return Reference to this move */
-    public static Move get(GoColor color, GoPoint point)
+    public static Move get(Stone.StoneType color, GoPoint point)
     {
-        assert color.isBlackWhite();
         if (point == null)
         {
             if (color == BLACK)
@@ -87,9 +87,9 @@ public final class Move
 
     private static Move[][] s_movesWhite;
 
-    private final GoColor m_color;
+    private final Stone.StoneType m_color;
 
-    private final GoPoint m_point;
+    private final Stone.StoneType m_point;
 
     private final String m_string;
 
@@ -101,7 +101,7 @@ public final class Move
         s_movesWhite = init(WHITE);
     }
 
-    private static Move[][] init(GoColor color)
+    private static Move[][] init(Stone.StoneType color)
     {
         Move[][] result = new Move[GoPoint.MAX_SIZE][GoPoint.MAX_SIZE];
         StringBuilder buffer = new StringBuilder(8);
@@ -119,7 +119,7 @@ public final class Move
         return result;
     }
 
-    private Move(GoColor color, GoPoint point, String string)
+    private Move(Stone.StoneType color, GoPoint point, String string)
     {
         m_point = point;
         m_color = color;
