@@ -9,13 +9,10 @@ import static resource.Stone.StoneType.BLACK;
 import static resource.Stone.StoneType.WHITE;
 //import static net.sf.gogui.go.GoColor.BLACK_WHITE;
 //import static net.sf.gogui.go.GoColor.WHITE_BLACK;
-<<<<<<< Upstream, based on origin/master
 
-=======
 import gtp.gogame.GoPoint;
 import gtp.gogame.Komi;
 import gtp.gogame.Move;
->>>>>>> 4cc5b32 Añadiendo timer
 import resource.Stone;
 //import net.sf.gogui.util.ObjectUtil;
 
@@ -26,6 +23,10 @@ import resource.Stone;
     engine outside this class. */
 public class GtpSynchronizer
 {
+
+    private boolean isSetupDifferent(ConstBoard targetState) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     /** Callback that is called after each change in the engine's move
         number.
         Necessary, because sending multiple undo or play commands can be

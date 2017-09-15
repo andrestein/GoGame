@@ -3,6 +3,7 @@
 package gtp.gogame;
 
 import java.util.Iterator;
+import resource.Stone;
 
 /** Const functions of go.Board.
     @see Board */
@@ -52,4 +53,6 @@ public interface ConstBoard
     boolean isSuicide(GoColor c, GoPoint p);
 
     Iterator<GoPoint> iterator();
+
+    public ConstPointList getSetup(Stone.StoneType stoneType);
 }
